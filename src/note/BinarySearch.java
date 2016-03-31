@@ -60,13 +60,33 @@ public class BinarySearch {
         return left;
     }
 
+
+    /**
+     *
+     * @param nums An array that has been sorted.
+     * @param val The double input value to search for in the array.
+     * @return The position of the item whose value is less than or equal to the input value.
+     */
+    public int binarySearchThird(long[] nums, double val){
+        int left=0,right=nums.length-1;
+        int middle = 0;
+        while(left <= right){
+            middle = left + (right-left)/2;
+            if(nums[middle] >= val){
+                right = middle-1;
+            } else{
+                left = middle+1;
+            }
+        }
+        return right;
+    }
+
     @Test
     public void binarySearchTest(){
 //        long[] arrtest = {-3,1,2,4};
         long[] arrtest = {-3};
-        int pos1 = binarySearch(arrtest,-9);
-        int pos2 = binarySearch(arrtest,5);
-        System.out.println(1);
+        int pos1 = binarySearchThird(arrtest, -9);
+        int pos2 = binarySearchThird(arrtest,5);
         System.out.println(pos1+":" + pos2);
 
 
