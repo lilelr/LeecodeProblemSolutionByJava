@@ -1,5 +1,7 @@
 package note;
 
+import org.junit.Test;
+
 /**
  * Created by yuxiao on 3/31/16.
  */
@@ -56,6 +58,18 @@ public class BinarySearch {
             }
         }
         return left;
+    }
+
+    @Test
+    public void binarySearchTest(){
+//        long[] arrtest = {-3,1,2,4};
+        long[] arrtest = {-3};
+        int pos1 = binarySearch(arrtest,-9);
+        int pos2 = binarySearch(arrtest,5);
+        System.out.println(1);
+        System.out.println(pos1+":" + pos2);
+
+
     }
 
 
