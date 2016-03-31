@@ -1,3 +1,5 @@
+package problems.CountofRangeSum327;
+
 import org.junit.Test;
 
 import java.lang.reflect.Array;
@@ -54,26 +56,6 @@ public class Solution {
 
     }
 
-    public  int binarySearch(long[] nums,int val){
-        int left=0,right=nums.length-1;
-        int middle;
-        while (left <= right){
-            middle = left+(right-left)/2;
-            if (nums[middle] == val){
-                if (middle>left && nums[middle-1] == val){
-                    right = middle-1;
-                }else{
-                    return middle;
-                }
-            }
-            else if(nums[middle] <val){
-                left = middle+1;
-            } else{
-                right = middle-1;
-            }
-        }
-        return left;
-    }
 
     public  int bStree(long[] nums, double val){
         int left=0,right=nums.length-1;
@@ -89,26 +71,8 @@ public class Solution {
         return left;
     }
 
-//    private int[] ans;
-
-    @Test
-    public void binarySearchTest(){
-////        long[] arrtest = {-3,1,2,4};
-//        long[] arrtest = {-3};
-//        int pos1 = binarySearch(arrtest,-9);
-//        int pos2 = binarySearch(arrtest,5);
-//        if( pos1 == pos2 && ( pos1>=0 && pos1<=arrtest.length-1 ) ){
-//            System.out.println(1);
-//        }else{
-//            if (pos2){
-//
-//            }
-//        }
-//
-//        System.out.println(pos1+":" + pos2);
 
 
-    }
 
 
     @Test
