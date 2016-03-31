@@ -1,3 +1,5 @@
+import org.junit.Test;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -5,9 +7,9 @@ import java.util.Arrays;
  * Created by yuxiao on 3/27/16.
  */
 public class Solution {
-    public static  int countRangeSum(int[] nums, int lower, int upper) {
+    public  int countRangeSum(int[] nums, int lower, int upper) {
 
-        if (nums.length ==0 || lower > upper){
+        if (nums==null || nums.length ==0 || lower > upper){
             return 0;
         }
 
@@ -18,12 +20,12 @@ public class Solution {
         return  ans;
     }
 
-    public static int calculate(int[] nums,int l,int r,int lower,int upper){
+    public  int calculate(int[] nums,int l,int r,int lower,int upper){
         if (l==r){
             return (nums[l] >= lower && nums[l] <= upper)? 1 : 0;
         } else if (l<r){
             int m = l+(r-l)/2;
-            long[] prefixOfSecondArray = new long[r-m+1];
+            long[] prefixOfSecondArray = new long[r-m];
             long sum=0;
             for (int i=m+1;i<=r;i++){
                 sum += nums[i];
@@ -36,13 +38,13 @@ public class Solution {
             int count=0;
             for(int i=m;i>=l;i--){
                 sum += nums[i];
-                int tempupper = binarySearch(prefixOfSecondArray, upper-sum);
-                int templower = binarySearch(prefixOfSecondArray, lower-sum);
-                if ( tempupper==-1 || templower==nums.length){
-                    continue;
-                } else{
-                    count += (tempupper- templower) +1;
+                int tempupper = bStree(prefixOfSecondArray, upper - sum + 0.5);
+                int templower = bStree(prefixOfSecondArray, lower-sum-0.5);
+                    count += tempupper- templower;
+                if(tempupper == prefixOfSecondArray.length && templower==-1){
+                    count--;
                 }
+
             }
             return calculate(nums,l,m,lower,upper) + calculate(nums,m+1,r,lower,upper) + count;
 
@@ -52,7 +54,7 @@ public class Solution {
 
     }
 
-    public static int binarySearch(long[] nums,long val){
+    public  int binarySearch(long[] nums,int val){
         int left=0,right=nums.length-1;
         int middle;
         while (left <= right){
@@ -70,17 +72,50 @@ public class Solution {
                 right = middle-1;
             }
         }
-        if (left ==0 && nums[0] > val) return -1;
         return left;
 
     }
 
+    public  int bStree(long[] nums, double val){
+        int left=0,right=nums.length-1;
+        int middle = 0;
+        while (left <= right){
+            middle = left + (right-left)/2;
+            if (nums[middle] <= val){
+                left = middle+1;
+            } else{
+                right = middle-1;
+            }
+        }
+        return left;
+    }
+
 //    private int[] ans;
 
-    public static void main(String[] args){
-        int[] arr = {-2,5,-1};
+    @Test
+    public void binarySearchTest(){
+//        long[] arrtest = {-3,1,2,4};
+        long[] arrtest = {-3};
+        int pos1 = binarySearch(arrtest,-9);
+        int pos2 = binarySearch(arrtest,5);
+        System.out.println(pos1+":" + pos2);
+
+    }
+
+
+    @Test
+    public  void main(){
+
+//        int[] arrtest = {-2, 5, -1};
+//        int[] arrtest = {-2};
+        int[] arrtest = {-3,1,2,-2,2,-1};
+
+
+        long[] arr = {-2,5,-1};
 //        System.out.println(binarySearch(arr,-2));
 //                System.out.println(binarySearch(arr,1000));
-        System.out.println(countRangeSum(arr,-2,2));
+//        System.out.println(countRangeSum(arr,-2,2));
+//        System.out.println(bStree(arr,10));
+        System.out.println(calculate(arrtest,0,arrtest.length-1,-3,-1));
     }
 }
