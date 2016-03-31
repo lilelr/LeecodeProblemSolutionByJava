@@ -73,7 +73,6 @@ public class Solution {
             }
         }
         return left;
-
     }
 
     public  int bStree(long[] nums, double val){
@@ -94,11 +93,20 @@ public class Solution {
 
     @Test
     public void binarySearchTest(){
-//        long[] arrtest = {-3,1,2,4};
-        long[] arrtest = {-3};
-        int pos1 = binarySearch(arrtest,-9);
-        int pos2 = binarySearch(arrtest,5);
-        System.out.println(pos1+":" + pos2);
+////        long[] arrtest = {-3,1,2,4};
+//        long[] arrtest = {-3};
+//        int pos1 = binarySearch(arrtest,-9);
+//        int pos2 = binarySearch(arrtest,5);
+//        if( pos1 == pos2 && ( pos1>=0 && pos1<=arrtest.length-1 ) ){
+//            System.out.println(1);
+//        }else{
+//            if (pos2){
+//
+//            }
+//        }
+//
+//        System.out.println(pos1+":" + pos2);
+
 
     }
 
