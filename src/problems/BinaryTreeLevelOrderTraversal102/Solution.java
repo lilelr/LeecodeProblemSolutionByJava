@@ -1,0 +1,71 @@
+package problems.BinaryTreeLevelOrderTraversal102;
+
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * Created by yuxiao on 4/2/16.
+ */
+
+public class Solution {
+    //  Definition for a binary tree node.
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        if (root==null) return  res;
+        TreeNode[] queue = new TreeNode[10000];
+        int front=-1,rear=-1;
+        int last=0;
+        queue[++rear] = root;
+
+        List<Integer> tempList = new ArrayList<>();
+        while (front < rear){
+            TreeNode tempNode = queue[++front];
+            tempList.add(tempNode.val);
+            if(tempNode.left!=null) queue[++rear] = tempNode.left;
+            if(tempNode.right!=null) queue[++rear] = tempNode.right;
+
+            if(front == last){
+                last = rear;
+                List<Integer> saveList = new ArrayList<>();
+                saveList.addAll(tempList);
+                res.add(saveList);
+                tempList.clear();
+            }
+        }
+
+        return  res;
+    }
+
+    @Test
+    public void testlevelOrder(){
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(9);
+        root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15);
+        root.right.right = new TreeNode(7);
+        List<List<Integer>> res = levelOrder(root);
+        Iterator<List<Integer>> iterator = res.iterator();
+        while(iterator.hasNext()){
+            List<Integer> itemList = iterator.next();
+            Iterator<Integer> iteratorInt = itemList.iterator();
+
+            while(iteratorInt.hasNext()){
+                System.out.print(iteratorInt.next()+",");
+            }
+            System.out.println();
+        }
+    }
+
+
+}
+
