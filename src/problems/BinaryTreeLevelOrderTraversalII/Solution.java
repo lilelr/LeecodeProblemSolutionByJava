@@ -16,7 +16,7 @@ public class Solution {
         TreeNode(int x) { val = x; }
     }
 
-    /// BFS+resverse 4ms
+    /// BFS 4ms
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
 
         List<List<Integer>> res = new ArrayList<List<Integer>>();
@@ -40,9 +40,9 @@ public class Solution {
                 tmp.add(t.val);
             }
 
-            res.add(tmp);
+            res.add(0,tmp);
         }
-        reverseList(res);
+//        reverseList(res);
         return res;
     }
 
