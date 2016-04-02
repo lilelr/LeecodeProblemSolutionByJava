@@ -2,9 +2,7 @@ package problems.BinaryTreeLevelOrderTraversal102;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by yuxiao on 4/2/16.
@@ -45,6 +43,47 @@ public class Solution {
 
         return  res;
     }
+
+
+    public List<List<Integer>> levelOrderBFS(TreeNode root){
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(root == null){
+            return res;
+        }
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.offer(root);
+        while(!q.isEmpty()){
+            List<Integer> tmp = new ArrayList<>();
+            int size = q.size();
+            for (int i=0;i<size; i++){
+                TreeNode t = q.poll();
+                if(t.left !=null){
+                    q.offer(t.left);
+                }
+                if(t.right != null){
+                    q.offer(t.right);
+                }
+                tmp.add(t.val);
+            }
+
+            res.add(tmp);
+        }
+        return res;
+    }
+
+    public List<List<Integer>> levelOrderDFS(TreeNode root){
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(root == null){
+            return res;
+        }
+
+
+        return res;
+    }
+
+
+
 
     @Test
     public void testlevelOrder(){
