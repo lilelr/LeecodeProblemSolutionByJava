@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * Created by yuxiao on 4/2/16.
+ * Zigzag-level-order of binary tree.
  */
 public class Solution {
     //  Definition for a binary tree node.
@@ -16,6 +17,7 @@ public class Solution {
         TreeNode(int x) { val = x; }
     }
 
+    ///BFS 3ms
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
        List<List<Integer>> res = new ArrayList<>();
         if(root==null)return res;
@@ -53,6 +55,31 @@ public class Solution {
             list.set(i,list.get(len-i-1));
             list.set(len-i-1,temp);
         }
+    }
+
+    ///DFS 2ms
+    public List<List<Integer>> zigzagLevelOrderDFS(TreeNode root){
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(root == null){
+            return res;
+        }
+
+        dfs(res,root,0);
+        return res;
+    }
+
+    public void dfs(List<List<Integer>> list, TreeNode node, int deep){
+        if(node==null) return;
+        if(list.size()==deep)
+            list.add(new ArrayList<Integer>());
+        if(deep%2!=0){
+            list.get(deep).add(0,node.val);
+        }else{
+            list.get(deep).add(node.val);
+        }
+
+        dfs(list,node.left,deep+1);
+        dfs(list,node.right,deep+1);
     }
 
 
