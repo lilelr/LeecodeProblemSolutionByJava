@@ -1,3 +1,5 @@
 310 临时答案数组，避免出错
 遍历，有时候逆向会产生新思路
 java 两个对象赋值传递的是引用，在循环内定义临时的list，若循环体内还被其他元素引用，则循环结束后，内存中还保留
+
+263 ugly number:  Too many cycles would cause Time Limited.
