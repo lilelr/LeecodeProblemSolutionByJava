@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Solution {
 
-
+    /// O(n) n is the sum of the nodes of the tree.
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
            List<Integer>   ans = new ArrayList<>();
            if(n==0) return ans;
