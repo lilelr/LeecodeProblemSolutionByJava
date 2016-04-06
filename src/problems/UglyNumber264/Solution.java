@@ -2,9 +2,7 @@ package problems.UglyNumber264;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by yuxiao on 4/6/16.
@@ -44,10 +42,29 @@ public class Solution {
     }
 
 
+    public int uglyNumberByPriorityQueue(int n){
+        if(n == 1) return 1;
+        int[] factors = {2,3,5};
+        Queue<Long> queue = new PriorityQueue<>();
+        queue.offer(Long.valueOf(1));
+        Long pollItem=0L;
+        for (int i=0;i<n;i++){
+             pollItem = queue.poll();
+            for(int factor:factors){
+                Long addItem = pollItem*factor;
+                if(!queue.contains(addItem)){
+                    queue.offer(addItem);
+                }
+            }
+        }
+        return pollItem.intValue();
+    }
+
+
 
     @Test
     public void testnthUglyNumber(){
 
-        System.out.println(nthUglyNumber(12));
+        System.out.println(uglyNumberByPriorityQueue(12));
     }
 }
