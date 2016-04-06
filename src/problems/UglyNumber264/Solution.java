@@ -11,7 +11,7 @@ public class Solution {
 
 
 
-    /// Dynamic Programming
+    /// Dynamic Programming  O(n)
     public int nthUglyNumber(int n) {
         if(n==1) return 1;
         List<Integer> ans = new ArrayList<>();
@@ -42,6 +42,7 @@ public class Solution {
     }
 
 
+    /// O(nlogn)  PriorityQueue
     public int uglyNumberByPriorityQueue(int n){
         if(n == 1) return 1;
         int[] factors = {2,3,5};
