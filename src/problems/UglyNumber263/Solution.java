@@ -26,6 +26,7 @@ public class Solution {
         }
     }
 
+
     @Test
     public void testIsUgly(){
         System.out.println(isUgly(8));
