@@ -1,5 +1,7 @@
 package problems.ReconstructItinerary332;
 
+import org.junit.Test;
+
 import java.util.*;
 
 /**
@@ -25,25 +27,35 @@ public class Solution {
 
         for(List<String> endlists:graph.values()){
 //            Collections.sort(endlists,Collections.reverseOrder());
+            Collections.sort(endlists);
+
         }
 
         Stack<String> stack = new Stack<>();
         stack.push("JFK");
         while(!stack.isEmpty()){
-            String popStart = stack.pop();
-            ret.add(popStart);
-            if(graph.containsKey(popStart)){
-                List<String> popStartList = graph.get(popStart);
-                while (!popStartList.isEmpty()){
-                    String nextAddress=popStartList.get(0);
-                    stack.push(nextAddress);
-                    popStartList.remove(0);
+            String peekStart = stack.peek();
 
-                }
-                graph.remove(popStart);
+            while (graph.containsKey(peekStart) && !graph.get(peekStart).isEmpty()){
+                stack.push(graph.get(peekStart).get(0));
+                graph.get(peekStart).remove(0);
+                peekStart=stack.peek();
             }
+            ret.add(0,stack.pop());
         }
 
         return  ret;
+    }
+
+    @Test
+    public void testfindItinerary(){
+        String[][] tickets = new String[3][2];
+        tickets[0][0] = "JFK";
+        tickets[0][1] = "KUL";
+        tickets[1][0] = "JFK";
+        tickets[1][1] = "NRT";
+        tickets[2][0] = "NRT";
+        tickets[2][1] = "JFK";
+        List<String> ret = findItinerary(tickets);
     }
 }
