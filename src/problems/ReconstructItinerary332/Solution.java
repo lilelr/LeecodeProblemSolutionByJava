@@ -5,9 +5,10 @@ import org.junit.Test;
 import java.util.*;
 
 /**
- * Created by yuxiao on 4/7/16.  Graph DFS
+ * Created by yuxiao on 4/7/16.  Graph
  */
 public class Solution {
+   /// DFS using stack
     public List<String> findItinerary(String[][] tickets) {
         List<String> ret = new ArrayList<>();
         if(tickets == null || tickets.length==0) return ret;
