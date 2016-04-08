@@ -9,18 +9,20 @@ import java.util.List;
  */
 
 
-
 public class Solution {
     /**
-     *  List Sort by quickSort
+     * List Sort by quickSort
      */
 
-      //Definition for singly-linked list.
-      public class ListNode {
-          int val;
-          ListNode next;
-          ListNode(int x) { val = x; }
-      }
+    //Definition for singly-linked list.
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
 
     // return ListNode[4]
     // ListNode[0] -> start of smaller list, null if none
@@ -39,15 +41,15 @@ public class Solution {
         ListNode bigLstStart = null;
         ListNode bigLstEnd = null;
 
-        for(ListNode node=head.next; node!=null; node=node.next) {
-            if(node.val < pivotLstStart.val) {
-                if(smallLstStart==null)
+        for (ListNode node = head.next; node != null; node = node.next) {
+            if (node.val < pivotLstStart.val) {
+                if (smallLstStart == null)
                     smallLstStart = node;
                 else
                     smallLstEnd.next = node;
                 smallLstEnd = node;
             } else if (node.val > pivotLstStart.val) {
-                if(bigLstStart==null)
+                if (bigLstStart == null)
                     bigLstStart = node;
                 else
                     bigLstEnd.next = node;
@@ -59,9 +61,9 @@ public class Solution {
         }
 
         // must terminate the smallLst and bigLst with null
-        if(smallLstEnd!=null)
+        if (smallLstEnd != null)
             smallLstEnd.next = null;
-        if(bigLstEnd!=null)
+        if (bigLstEnd != null)
             bigLstEnd.next = null;
 
         res[0] = smallLstStart;
@@ -80,7 +82,7 @@ public class Solution {
     private ListNode[] quickSortList(ListNode head) {
         ListNode[] res = new ListNode[2];
 
-        if(head==null)
+        if (head == null)
             return res;
 
         ListNode[] partitionRes = partition(head);
@@ -94,9 +96,9 @@ public class Solution {
 
         // Below code links the sorted smaller list, pivot list and sorted bigger list
         pivotTail.next = bigRes[0];
-        res[1] = bigRes[1]==null ? pivotTail : bigRes[1];
+        res[1] = bigRes[1] == null ? pivotTail : bigRes[1];
 
-        if(smallRes[0]==null) {
+        if (smallRes[0] == null) {
             res[0] = pivotHead;
         } else {
             res[0] = smallRes[0];
@@ -105,20 +107,57 @@ public class Solution {
         return res;
     }
 
+//    public ListNode sortList(ListNode head) {
+//        return quickSortList(head)[0];
+//    }
+
     public ListNode sortList(ListNode head) {
-        return quickSortList(head)[0];
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode lh = new ListNode(0);
+        ListNode rh = new ListNode(0);
+        ListNode mh = new ListNode(0);
+        ListNode lt = lh, rt = rh, mt = mh;
+        int val = head.val;
+        while (head != null) {
+            if (val == head.val) {
+                mt.next = head;
+                mt = head;
+            } else if (val > head.val) {
+                lt.next = head;
+                lt = head;
+            } else {
+                rt.next = head;
+                rt = head;
+            }
+            head = head.next;
+        }
+
+        lt.next = null;
+        rt.next = null;
+        lh.next = sortList(lh.next);
+        rh.next = sortList(rh.next);
+        lt = lh;
+        while (lt.next != null) {
+            lt = lt.next;
+        }
+        lt.next = mh.next;
+        mt.next = rh.next;
+        return lh.next;
     }
 
+
     @Test
-    public void testsortList(){
-        ListNode head = new ListNode(5);
-        ListNode second = new ListNode(4);
+    public void testsortList() {
+        ListNode head = new ListNode(4);
+        ListNode second = new ListNode(19);
         head.next = second;
-        ListNode third = new ListNode(3);
+        ListNode third = new ListNode(14);
         second.next = third;
-        ListNode forth = new ListNode(2);
+        ListNode forth = new ListNode(-3);
         third.next = forth;
-        sortList(head);
+        head = sortList(head);
     }
 
 }
