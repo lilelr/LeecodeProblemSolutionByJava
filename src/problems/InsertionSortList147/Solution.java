@@ -15,7 +15,7 @@ public class Solution {
         }
     }
 
-    //O(n^2)
+    //O(n^2)   List Sort
     public ListNode insertionSortList(ListNode head) {
         if (head == null || head.next == null) {
             return head;
