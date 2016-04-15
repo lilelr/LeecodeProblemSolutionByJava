@@ -11,6 +11,9 @@ public class Solution {
     //1. dp[i][j] = dp[i-1][j], which means we can find [0,j] in [0,i-1]
     //2. dp[i][j] = dp[i-1][j] + dp[i-1][j-1] if t[j] = s[i], either we can find [0,j] in
     //   [0,i-1], or [0,j-1] in [0,i-1] with t[j] = s[i]
+    //Notice: Iterate back forward would be true as well. For instance, s is "r", t is "rr"
+    // dp[0][0] =1, if iterate back forward, dp[1][2] = dp[0][1] + dp[0][2], which means
+    // dp[1][2] = 0
 
     public int numDistinctTwoDismension(String s, String t) {
         int lenS = s.length();
@@ -28,7 +31,16 @@ public class Solution {
 
 
         for (int i = 1; i <= lenS; i++) {
-            for (int j = 1; j <= lenT; j++) {
+//            for (int j = 1; j <= lenT; j++) {
+//                if (s.charAt(i - 1) == t.charAt(j - 1)) {
+//                    dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
+//                } else {
+//                    dp[i][j] = dp[i - 1][j];
+//                }
+//            }
+
+            //Iterate back forward
+            for (int j = lenT; j >= 1; j--) {
                 if (s.charAt(i - 1) == t.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
                 } else {
@@ -57,7 +69,6 @@ public class Solution {
                     dp[j] = (j == 0 ? 1 : dp[j - 1]) + dp[j];
                 }
             }
-
         }
         return dp[t.length() - 1];
     }
@@ -67,7 +78,8 @@ public class Solution {
         String s = "rrr";
         String t = "rr";
 //        int ans = numDistinct(s,t);
-        int ans = numDistinctOneDimension(s, t);
+//        int ans = numDistinctOneDimension(s, t);
+        int ans = numDistinctTwoDismension(s, t);
 
     }
 
