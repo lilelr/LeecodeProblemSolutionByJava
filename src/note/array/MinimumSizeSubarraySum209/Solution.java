@@ -1,4 +1,4 @@
-package problems.MinimumSizeSubarraySum209;
+package note.array.MinimumSizeSubarraySum209;
 
 import org.junit.Test;
 
