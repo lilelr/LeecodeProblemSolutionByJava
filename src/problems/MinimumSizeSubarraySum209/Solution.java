@@ -8,6 +8,8 @@ import java.util.Arrays;
  * Created by yuxiao on 16/4/20.
  */
 public class Solution {
+
+    // divide and merger O(n*logn*logn)
     public int minSubArrayLen(int s, int[] nums) {
         int len = nums.length;
         if (len == 0) return 0;
@@ -46,21 +48,38 @@ public class Solution {
                 return (nums[l]+nums[r] >= upper) ? 2: largest;
             }
         }  else if (l < r) {
-            int m = l + (r - l) / 2;
-            int sum = 0;
-            int tmpmin = largest;
-            for (int i = l; i <= r; i++) {
+            int m = l+(r-l)/2;
+            long[] prefixOfSecondArray = new long[r-m];
+            long sum=0;
+            int tempmin =largest;
+            for (int i=m+1;i<=r;i++){
                 sum += nums[i];
-                if (sum >= upper) {
-                    tmpmin = Math.min((i - l) + 1, tmpmin);
+                if(sum>=upper){
+                    tempmin = Math.min(tempmin,i-m);
                 }
+                prefixOfSecondArray[i-m-1] = sum;
             }
 
+
+            sum = 0;
+            int count=0;
+            for(int i=m;i>=l;i--){
+                sum += nums[i];
+                int tempupper = bStree(prefixOfSecondArray, upper - sum );
+                //no answer
+                if(tempupper == prefixOfSecondArray.length) continue;
+                count = (tempupper+1) + (m-i+1);
+                tempmin = Math.min(count,tempmin);
+//                if(tempupper == prefixOfSecondArray.length && templower==-1){
+//                    count--;
+//                }
+
+            }
             int leftCalculate = calculate(nums, l, m, largest, upper);
-            int rightCalculate = calculate(nums, m , r, largest, upper);
-            tmpmin = Math.min(leftCalculate, tmpmin);
-            tmpmin = Math.min(rightCalculate, tmpmin);
-            return tmpmin;
+            int rightCalculate = calculate(nums, m+1 , r, largest, upper);
+            tempmin = Math.min(leftCalculate, tempmin);
+            tempmin = Math.min(rightCalculate, tempmin);
+            return tempmin;
 
         } else {
             return largest;
@@ -68,12 +87,28 @@ public class Solution {
 
     }
 
+    public  int bStree(long[] nums, double val){
+        int left=0,right=nums.length-1;
+        int middle = 0;
+        while (left <= right){
+            middle = left + (right-left)/2;
+            if(nums[middle] == val) return middle;
+            if (nums[middle] < val){
+                left = middle+1;
+            } else{
+                right = middle-1;
+            }
+        }
+        return left;
+    }
+
     @Test
     public void test(){
 //        int[] nums = {2,3,1,2,4,3};
+//        int[] nums = {2,3,1};
         int[] nums = {10,5,13,4,8,4,5,11,14,9,16,10,20,8};
-//        int res = minSubArrayLen(7,nums);
         int res = minSubArrayLen(80,nums);
+//        int res = minSubArrayLen(4,nums);
         System.out.println(res);
     }
 
