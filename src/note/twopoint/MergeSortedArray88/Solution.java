@@ -6,7 +6,9 @@ import org.junit.Test;
  * Created by yuxiao on 16/4/21.
  */
 public class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
+
+//    O(n) space
+    public void merge1(int[] nums1, int m, int[] nums2, int n) {
            int lenM = m;
            int lenN = n;
            if(lenN == 0) return;
@@ -39,6 +41,16 @@ public class Solution {
              }
          }
 
+    }
+
+    // Since we have assume that nums1 have enough space (size that is equal er greater than m+n),
+    // iterate backforward using two points is simple and easy.
+    public void merge2(int[] nums1, int m, int[] nums2, int n) {
+        int p = m+n, p1 = m-1, p2 = n-1;
+        while(--p>=0) {
+            if(p1<0 || (p2>=0 && nums1[p1]<nums2[p2])) nums1[p] = nums2[p2--];
+            else nums1[p] = nums1[p1--];
+        }
     }
 
     @Test
