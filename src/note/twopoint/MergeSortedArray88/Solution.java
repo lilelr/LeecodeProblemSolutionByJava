@@ -57,6 +57,6 @@ public class Solution {
     public void test(){
         int[] nums1 = {0};
         int[] nums2 ={2,5,10};
-        merge(nums1,0,nums2,3);
+        merge1(nums1,0,nums2,3);
     }
 }
