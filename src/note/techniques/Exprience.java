@@ -1,6 +1,4 @@
-package note.twopoint.Sum15;
-
-import org.junit.Test;
+package note.techniques;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,7 +7,8 @@ import java.util.List;
 /**
  * Created by yuxiao on 16/4/21.
  */
-public class Solution {
+public class Exprience {
+
     // O(n^2) two points   It is also an good example using do{}while(*); compared with while(*);
     //[1,2,3,-1,0,-2,-3,-3]
     public List<List<Integer>> threeSum(int[] nums) {
@@ -53,39 +52,4 @@ public class Solution {
         return res;
 
     }
-
-    public List<Integer> sort(int a, int b, int c) {
-        int t;
-        if (a > b) {
-            t = a;
-            a = b;
-            b = t;
-        }
-        if (a > c) {
-            t = a;
-            a = c;
-            c = t;
-        }
-
-        if (b > c) {
-            t = c;
-            c = b;
-            b = t;
-        }
-
-        List<Integer> res = new ArrayList<>();
-        res.add(a);
-        res.add(b);
-        res.add(c);
-        return res;
-    }
-
-
-    @Test
-    public void test() {
-//        int[] nums = {-1, 0, 1,-1,4,0};
-        int[] nums = {1,2,-3,-1,0};
-        List<List<Integer>> res = threeSum(nums);
-    }
-
 }
