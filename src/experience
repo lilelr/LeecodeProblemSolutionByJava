@@ -4,3 +4,5 @@ java 两个对象赋值传递的是引用，在循环内定义临时的list，�
 
 263 ugly number:  Too many cycles would cause Time Limited.
 148 When Link List lookuping, write "p=p.next" firstly.
+
+18 do while  *2 *4 <<1 <<2
