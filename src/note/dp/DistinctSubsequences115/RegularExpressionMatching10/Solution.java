@@ -56,44 +56,67 @@ public class Solution {
         return dp[s.length()][p.length()];
     }
 
-    //2 recursive 9ms
+    //2 recursive 9ms  iterate from back
     boolean isMatchRecursive(String s,String p){
         int lenS = s.length(),lenP = p.length();
-        return backtracking(s,lenS,p,lenP);
+        return backtrackingBack(s,lenS,p,lenP);
 
     }
 
-    boolean backtracking(String s, int i,String p ,int j){
+    boolean backtrackingBack(String s, int i,String p ,int j){
         if(i==0 && j==0) return true;
         if(i!=0 && j==0) return false;
         if(i ==0 && j!=0){
             // in this case only p = "c*c*c*" this pattern can match null string
             if(p.charAt(j-1) == '*'){
-                return  backtracking(s,i,p,j-2);
+                return  backtrackingBack(s, i, p, j - 2);
             }
             return false;
         }
 
         // now both i and jj are not null
         if(s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.' ){
-            return backtracking(s,i-1,p,j-1);
+            return backtrackingBack(s, i - 1, p, j - 1);
         } else if(p.charAt(j-1) == '*'){
             // two cases: determines on whether p[j-2] == s[i-1]
             // first p[j-2]* matches zero characters of p
             //            // s = ab   p = ab* i=2,j=3
 
-            if(backtracking(s,i,p,j-2)) return true;
+            if(backtrackingBack(s, i, p, j - 2)) return true;
 
             // second consider whether p[j-2] == s[i-1] , if true, then s[i-1] is matched, move to backtracking(i-1,j)
             // s = abb   p = ab* i=3,j=3
             if(p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.'){
-                return backtracking(s,i-1,p,j);
+                return backtrackingBack(s, i - 1,p,j);
             }
             return  false;
         }
 
         return false;
 
+    }
+
+
+    //3 Recursive iterate from front
+    public boolean isMatchFrontIterate(String s, String p) {
+        if (s == null || p == null) return false;
+        return isMatch(s.toCharArray(), 0, p.toCharArray(), 0);
+    }
+
+    private boolean isMatch(char[] s, int i, char[] p, int j) {
+        if (j == p.length) return i == s.length;
+        if (j == p.length - 1 || p[j + 1] != '*') {
+            if (i < s.length && (p[j] == '.' || s[i] == p[j])) {
+                return isMatch(s, i + 1, p, j + 1);
+            } else {
+                return false;
+            }
+        }
+        while (i < s.length && (p[j] == '.' || s[i] == p[j])) {
+            if (isMatch(s, i, p, j + 2)) return true;
+            i++;
+        }
+        return isMatch(s, i, p, j + 2);
     }
 
     @Test
