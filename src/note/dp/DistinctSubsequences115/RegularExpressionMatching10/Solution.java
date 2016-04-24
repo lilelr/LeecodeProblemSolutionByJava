@@ -8,7 +8,7 @@ import org.junit.Test;
 public class Solution {
 
 
-    // dp 6ms
+    //1 dp 6ms
     //https://leetcode.com/discuss/93024/easy-dp-java-solution-with-detailed-explanation
 //    1, If p.charAt(j) == s.charAt(i) :  dp[i][j] = dp[i-1][j-1];
 //    2, If p.charAt(j) == '.' : dp[i][j] = dp[i-1][j-1];
@@ -54,6 +54,46 @@ public class Solution {
             }
         }
         return dp[s.length()][p.length()];
+    }
+
+    //2 recursive 9ms
+    boolean isMatchRecursive(String s,String p){
+        int lenS = s.length(),lenP = p.length();
+        return backtracking(s,lenS,p,lenP);
+
+    }
+
+    boolean backtracking(String s, int i,String p ,int j){
+        if(i==0 && j==0) return true;
+        if(i!=0 && j==0) return false;
+        if(i ==0 && j!=0){
+            // in this case only p = "c*c*c*" this pattern can match null string
+            if(p.charAt(j-1) == '*'){
+                return  backtracking(s,i,p,j-2);
+            }
+            return false;
+        }
+
+        // now both i and jj are not null
+        if(s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.' ){
+            return backtracking(s,i-1,p,j-1);
+        } else if(p.charAt(j-1) == '*'){
+            // two cases: determines on whether p[j-2] == s[i-1]
+            // first p[j-2]* matches zero characters of p
+            //            // s = ab   p = ab* i=2,j=3
+
+            if(backtracking(s,i,p,j-2)) return true;
+
+            // second consider whether p[j-2] == s[i-1] , if true, then s[i-1] is matched, move to backtracking(i-1,j)
+            // s = abb   p = ab* i=3,j=3
+            if(p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.'){
+                return backtracking(s,i-1,p,j);
+            }
+            return  false;
+        }
+
+        return false;
+
     }
 
     @Test
