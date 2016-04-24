@@ -1,4 +1,4 @@
-package note.recursive.RegularExpressionMatching10;
+package note.backtracking.RegularExpressionMatching10;
 
 import org.junit.Test;
 
@@ -56,7 +56,7 @@ public class Solution {
         return dp[s.length()][p.length()];
     }
 
-    //2 recursive 9ms  iterate from back
+    //2 backtracking 9ms  iterate from back
     boolean isMatchRecursive(String s,String p){
         int lenS = s.length(),lenP = p.length();
         return backtrackingBack(s, lenS, p, lenP);

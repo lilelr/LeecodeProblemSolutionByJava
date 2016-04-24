@@ -1,4 +1,4 @@
-package note.recursive.LetterCombiantionsOfaPhoneNumber17;
+package note.backtracking.LetterCombiantionsOfaPhoneNumber17;
 
 import java.util.ArrayList;
 import java.util.HashMap;
