@@ -1,7 +1,9 @@
 package note.binarysearch.ContainsDuplicate220;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by yuxiao on 4/26/16.
@@ -34,4 +36,14 @@ public class Solution {
         }
         return false;
     }
+
+    public boolean containsDuplicate(int[] nums) {
+            Set<Integer> hashset  = new HashSet<>();
+           if(nums.length == 0) return false;
+          for(int key:nums){
+              if(!hashset.add(key)) return true;
+          }
+        return false;
+    }
+
 }
