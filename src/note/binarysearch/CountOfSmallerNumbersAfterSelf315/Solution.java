@@ -1,4 +1,4 @@
-package note.bianarysearch.CountOfSmallerNumbersAfterSelf315;
+package note.binarysearch.CountOfSmallerNumbersAfterSelf315;
 
 import java.util.ArrayList;
 import java.util.Arrays;
