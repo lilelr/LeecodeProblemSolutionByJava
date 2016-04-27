@@ -41,7 +41,7 @@ public class Solution {
         return ans.get(n-1);
     }
 
-    //313
+    //313 58ms  O(kN)
     public int nthSuperUglyNumber(int n, int[] primes) {
 
         if(n==1) return 1;
@@ -85,8 +85,26 @@ public class Solution {
         return ans.get(n-1);
     }
 
+    // optimize 31ms   O(kN)
+    public int nthSuperUglyNumber2(int n, int[] primes) {
+        int [] res = new int[n];
+        res[0] = 1;
+        int [] cur = new int[primes.length];
 
-    /// O(nlogn)  PriorityQueue
+        for(int i = 1; i < n; i++){
+            res[i] = Integer.MAX_VALUE;
+            for(int j = 0; j < primes.length; j++){
+                if (primes[j] * res[cur[j]] == res[i-1]) {
+                    cur[j]++;
+                }
+                res[i] = Math.min(res[i], primes[j]*res[cur[j]]);
+            }
+        }
+        return res[n-1];
+    }
+
+
+    /// O(nlogk)  PriorityQueue
     public int uglyNumberByPriorityQueue(int n){
         if(n == 1) return 1;
         int[] factors = {2,3,5};
