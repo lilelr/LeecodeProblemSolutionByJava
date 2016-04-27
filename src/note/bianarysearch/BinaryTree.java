@@ -1,4 +1,4 @@
-package note;
+package note.bianarysearch;
 
 import org.junit.Test;
 
