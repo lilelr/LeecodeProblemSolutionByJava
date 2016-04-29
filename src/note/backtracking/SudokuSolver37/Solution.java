@@ -37,6 +37,30 @@ public class Solution {
     }
 
 
+    // problem 36
+    public boolean isValidSudoku(char[][] board) {
+        vis1 = new boolean[9][9];
+        vis2 = new boolean[9][9];
+        vis3 = new boolean[9][9];
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                if (board[i][j] != '.') {
+                    int num = board[i][j] - '0' - 1;
+                    int k = calculateIndex(i,j);
+                    if(vis1[i][num]==true || vis2[j][num] == true || vis3[k][num] == true){
+                        return false;
+                    }
+                    vis1[i][num] = true;
+                    vis2[j][num] = true;
+                    vis3[k][num] = true;
+                }
+            }
+        }
+        return true;
+    }
+
+
+
     private void bt(char[][] board, int i, int j) {
         if (i == 9) {
             isFound = true;
