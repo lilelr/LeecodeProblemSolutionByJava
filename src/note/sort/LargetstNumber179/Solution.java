@@ -73,32 +73,30 @@ public class Solution {
                 }
 
                 if(minLen == len1){
-                    char lastItemOfStr1 = myStrItem1.getStr().charAt(minLen-1);
                     for(int i=minLen;i<len2;i++){
-                        if(lastItemOfStr1 == myStrItem2.getStr().charAt(i)){
-                            continue;
-                        }
-                        if(lastItemOfStr1 > myStrItem2.getStr().charAt(i)){
-                            return -1;
-                        } else{
-                            return 1;
+                      char tempItemOfLongStr = myStrItem2.getStr().charAt(i);
+                        for(int j=0;j<len1;j++){
+                            if(tempItemOfLongStr > myStrItem1.getStr().charAt(j)){
+                                return 1;
+                            } else if(tempItemOfLongStr < myStrItem1.getStr().charAt(j)){
+                                return -1;
+                            }
                         }
                     }
+                    return  0;
                 } else{
-                    char lastItemOfStr2 = myStrItem2.getStr().charAt(minLen-1);
                     for(int i=minLen;i<len1;i++){
-                        if(lastItemOfStr2 == myStrItem1.getStr().charAt(i)){
-                            continue;
-                        }
-                        if(lastItemOfStr2 > myStrItem1.getStr().charAt(i)){
-                            int a;
-                            return 1;
-                        } else{
-                            return -1;
+                        char tempItemOfLongStr = myStrItem1.getStr().charAt(i);
+                        for(int j=0;j<len2;j++){
+                            if(tempItemOfLongStr > myStrItem2.getStr().charAt(j)){
+                                return -1;
+                            } else if(tempItemOfLongStr < myStrItem2.getStr().charAt(j)){
+                                return 1;
+                            }
                         }
                     }
+                    return  0;
                 }
-                return 0;
             }
 
         }
@@ -107,7 +105,7 @@ public class Solution {
     @Test
     public void test(){
 //        int[] nums = {34,30,9,5,3};
-        int[] nums = {8,89,88880};
+        int[] nums = {8247,824};
         String res = largestNumber(nums);
         System.out.println(res);
 
