@@ -56,6 +56,7 @@ public class Solution {
         int[] nums = {105,7,5};
         int res = maximumGap(nums);
         System.out.println(res);
+        System.out.println(1L << 32);
     }
 
 }
