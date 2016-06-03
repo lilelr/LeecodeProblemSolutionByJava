@@ -5,7 +5,7 @@ package note.sort.MaximumGap164;
  */
 public class PreTrieSolution {
     //https://leetcode.com/discuss/78234/java-o-n-easy-solution-using-trie-based-algorithm
-    // O(n)
+    // O(n)  15ms
     private class Trie {
         boolean isNum = false;
         Trie[] nexts = new Trie[2];
