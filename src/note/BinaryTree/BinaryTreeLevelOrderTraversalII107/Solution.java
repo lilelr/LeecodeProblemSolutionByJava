@@ -1,4 +1,4 @@
-package problems.BinaryTreeLevelOrderTraversalII107;
+package note.BinaryTree.BinaryTreeLevelOrderTraversalII107;
 
 import org.junit.Test;
 

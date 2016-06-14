@@ -1,4 +1,4 @@
-package problems.BinaryTreeRightSideView199;
+package note.BinaryTree.BinaryTreeRightSideView199;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

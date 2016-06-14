@@ -1,4 +1,4 @@
-package problems.BinaryTreePostorderTraversal145;
+package note.BinaryTree.BinaryTreePostorderTraversal145;
 
 import org.junit.Test;
 
