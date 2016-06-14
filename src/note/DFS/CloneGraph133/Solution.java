@@ -1,9 +1,6 @@
 package note.DFS.CloneGraph133;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by yuxiao on 6/14/16.
@@ -41,6 +38,26 @@ public class Solution {
         Map<Integer, UndirectedGraphNode> map = new HashMap<>();
         return dfs(node, map);
 
+    }
+
+    public UndirectedGraphNode bfs(UndirectedGraphNode node){
+        if(node ==null) return null;
+
+        Deque<UndirectedGraphNode> queue = new LinkedList<>();
+        queue.push(node);
+        Map<Integer,UndirectedGraphNode> map = new HashMap<>();
+        map.put(node.label,new UndirectedGraphNode(node.label));
+        while (!queue.isEmpty()){
+            UndirectedGraphNode frontNode = queue.pop();
+            for(UndirectedGraphNode neighbor: frontNode.neighbors){
+                if (!map.containsKey(neighbor.label)){
+                    map.put(neighbor.label,new UndirectedGraphNode(neighbor.label));
+                    queue.push(neighbor);
+                }
+                map.get(frontNode.label).neighbors.add(map.get(neighbor.label));
+            }
+        }
+        return map.get(node.label);
     }
 
 
