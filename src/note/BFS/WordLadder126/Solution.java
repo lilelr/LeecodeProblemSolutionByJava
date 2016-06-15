@@ -8,99 +8,122 @@ import java.util.*;
  * Created by yuxiao on 6/15/16.
  */
 public class Solution {
-    private int pathLen;
-
-    public class Node{
-        public String label;
-        public ArrayList<Node> neighbors;
-
-        Node(String x){
-            label = x;
-            neighbors = new ArrayList<>();
-        }
-    }
-
-    private boolean isneighbor(String src,String dest){
-        int diff=0;
-        for(int i=0;i<src.length();i++){
-            if(src.charAt(i) != dest.charAt(i)){
-                diff++;
-            }
-        }
-        if(diff==1) return true;
-        return false;
-    }
+    //https://leetcode.com/discuss/82139/accepted-solution-focus-readability-explanaition-approach
+    private HashSet<String> words;
+    private HashMap<String, Integer> visited = new HashMap<String, Integer>();
+    private List<List<String>> results = new ArrayList<List<String>>();
 
     public List<List<String>> findLadders(String beginWord, String endWord, Set<String> wordList) {
-        Map<String,Node> map = new HashMap<>();
-        wordList.add(beginWord);
-        wordList.add(endWord);
-        int wordListLen = wordList.size();
-        String[] words = new String[wordListLen];
-        int k=0;
-        for(String str:wordList){
-            words[k] = str;
-            k++;
+        this.words = new HashSet(wordList);
+
+        bfs(beginWord, endWord);
+
+        return this.results;
+    }
+
+    public void bfs(String start, String end)
+    {
+        Queue<Node> q = new LinkedList<Node>();
+
+        q.offer(new Node(null,start));
+
+        List<Node> foundLadders = new ArrayList<>();
+        Integer shortestPathLevel = null;
+
+        while(!q.isEmpty())
+        {
+            Node node = q.poll();
+
+            //if this node forms a ladder longer than we already found, skip it.
+            if(shortestPathLevel !=null && node.level > shortestPathLevel) continue;
+
+            //for each word remember the level in a ladder it was first found at
+            this.visited.put(node.word, node.level);
+
+            Set<String> mutations = getPossibleMutations(node.word);
+
+            //if current word can mutate into end word, we are done, ladder is found, it is shortest because of BSF
+            if(mutations.contains(end))
+            {
+                foundLadders.add(node);
+                shortestPathLevel = node.level;
+                continue;
+            }
+
+            for(String mutation:mutations)
+            {
+                //if possible next word was visited in current or upper level, ignore it (it will not form a shorter ladder)
+                Integer visited_level = this.visited.get(mutation);
+                if(visited_level != null && visited_level <= node.level) continue;
+
+                Node nextNode = new Node(node, mutation);
+                q.offer(nextNode);
+            }
         }
 
-        for(int i=0;i<wordListLen;i++){
-            String curItem = words[i];
-            for(int j=i+1;j<wordListLen;j++){
-                if(isneighbor(curItem,words[j])){
-                    Node curItemNode;
-                    Node destItemNode;
-                    if(!map.containsKey(curItem)){
-                        map.put(curItem,new Node(curItem));
+        //construct all ladders from found nodes
+        for(Node node:foundLadders)
+        {
+            ArrayList<String> path = new ArrayList<>(Arrays.asList(node.word, end));
+            while(node.parent != null)
+            {
+                node = node.parent;
+                path.add(0, node.word);
+            }
+            results.add(path);
+        }
+    }
 
-                    }
-                    curItemNode = map.get(curItem);
+    private HashMap<String, Set<String>> possibleMutations = new HashMap<String, Set<String>>();
+    private Set<String> getPossibleMutations(String word)
+    {
+        Set<String> mutations = possibleMutations.get(word);
+        if(mutations == null)
+        {
+            mutations = new HashSet<String>();
+            for(int i=0; i< word.length();i++)
+            {
+                mutations.addAll(getMutations(word,i));
+            }
+            possibleMutations.put(word,mutations);
+        }
+        return mutations;
+    }
 
-                    if(!map.containsKey(words[j])){
-                        map.put(words[j],new Node(words[j]));
-                    }
-                    destItemNode = map.get(words[j]);
-
-                    if(!curItemNode.neighbors.contains(destItemNode)){
-                        curItemNode.neighbors.add(destItemNode);
-                        destItemNode.neighbors.add(curItemNode);
-                    }
+    private static char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+    private List<String> getMutations(String word, int charPosition)
+    {
+        List<String> mutations = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder(word);
+        char currentChar = word.charAt(charPosition);
+        for(int i=0; i<alphabet.length;i++)
+        {
+            char newChar = alphabet[i];
+            if(newChar != currentChar)
+            {
+                sb.setCharAt(charPosition, newChar);
+                String mutation = sb.toString();
+                if(this.words.contains(mutation))
+                {
+                    mutations.add(mutation);
                 }
             }
-
         }
-        pathLen = Integer.MAX_VALUE;
-        List<List<String>> res = new ArrayList<>();
-
-        if(beginWord == null || endWord == null) return res;
-        Node startNode = map.get(beginWord);
-        ArrayList<Node> path = new ArrayList<>();
-        dfs(startNode,endWord,res,path);
-        return res;
-
+        return mutations;
     }
 
-    private void dfs(Node curNode,String endWord,List<List<String>> res,ArrayList<Node> path){
-        if(curNode == null) return;
-        path.add(curNode);
-        if(curNode.label == endWord){
-            if(path.size() < pathLen){
-                pathLen = path.size();
-                res.clear();
-                res.add(new ArrayList(path));
-            }else if(path.size() == pathLen){
-                res.add(new ArrayList(path));
-            }
-            return;
-        }
+    private class Node{
+        public final String word;
+        public final Node parent;
+        public final int level;
 
-        for(Node neighbor:curNode.neighbors){
-            if(!path.contains(neighbor)){
-                dfs(neighbor,endWord,res,new ArrayList<>(path));
-            }
+        public Node(Node parent, String word)
+        {
+            this.parent = parent;
+            this.word = word;
+            this.level = (parent==null) ? 1 : parent.level+1;
         }
-
     }
-
 
     @Test
     public void test(){
