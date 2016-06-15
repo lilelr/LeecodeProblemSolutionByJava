@@ -127,7 +127,7 @@ public class Solution {
 
     @Test
     public void test(){
-         Set<String> wordList = new HashSet<>();
+        Set<String> wordList = new HashSet<>();
         wordList.add("hot");
 //        wordList.add("dot");
         wordList.add("dog");
