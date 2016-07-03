@@ -75,6 +75,7 @@ public class Solution {
 //        return dp[n];
 //    }
 
+    // recursive https://discuss.leetcode.com/topic/35005/java-2ms-solution-beats-92
     public List<TreeNode> generateTrees(int n) {
         if(n==0) return new ArrayList<TreeNode>();
         return generate(1,n);
