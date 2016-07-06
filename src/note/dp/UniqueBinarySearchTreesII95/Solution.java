@@ -19,94 +19,69 @@ public class Solution {
         }
     }
 
+//  https://discuss.leetcode.com/topic/2940/java-solution-with-dp
+    public  List<TreeNode> generateTrees(int n) {
+        List<TreeNode>[] result = new List[n+1];
+        result[0] = new ArrayList<TreeNode>();
+        result[0].add(null);
 
-//    TreeNode deepCopy(TreeNode root) {
-//        if (root == null) return null;
-//        TreeNode tmp = new TreeNode(1);
-//        tmp.left = deepCopy(root.left);
-//        tmp.right = deepCopy(root.right);
-//        return tmp;
-//    }
-//
-//    int cur = 0;
-//
-//    void setValue(TreeNode root) {
-//        if (root.left != null) {
-//            setValue(root.left);
-//        }
-//        root.val = cur++;
-//        if (root.right != null) {
-//            setValue(root.right);
-//        }
-//
-//    }
-//
-//    public List<TreeNode> generateTrees(int n) {
-//        if (n <= 0) {
-//            List<TreeNode> res = new ArrayList<TreeNode>();
-//            res.add(null);
-//            return res;
-//        }
-//
-//        List<TreeNode>[] dp = new ArrayList[n + 1];
-//        for (int i = 0; i < n + 1; ++i) {
-//            dp[i] = new ArrayList<TreeNode>();
-//        }
-//
-//        dp[0].add(null);
-//
-//        for (int i = 1; i <= n; ++i) {
-//            for (int j = 0; j < i; ++j) {
-//                for (int k = 0; k < dp[j].size(); ++k) {
-//                    for (int l = 0; l < dp[i - 1 - j].size(); ++l) {
-//                        TreeNode tmp = new TreeNode(1);
-//                        tmp.left = deepCopy(dp[j].get(k));
-//                        tmp.right = deepCopy(dp[i - 1 - j].get(l));
-//                        dp[i].add(tmp);
-//                    }
-//                }
-//            }
-//        }
-//
-//        for (int i = 0; i < dp[n].size(); ++i) {
-//            cur = 1;
-//            setValue(dp[n].get(i));
-//        }
-//        return dp[n];
-//    }
-
-    // recursive https://discuss.leetcode.com/topic/35005/java-2ms-solution-beats-92
-    public List<TreeNode> generateTrees(int n) {
-        if(n==0) return new ArrayList<TreeNode>();
-        return generate(1,n);
-
-    }
-
-    public List<TreeNode> generate(int start,int end){
-        if(start > end){
-            List<TreeNode> list = new ArrayList<TreeNode>();
-            list.add(null);
-            return list;
-        }
-        if(start == end){
-            List<TreeNode> list = new ArrayList<TreeNode>();
-            list.add(new TreeNode(start));
-            return list;
-        }
-
-        List<TreeNode> roots = new ArrayList<TreeNode>();
-        for(int i=start;i<=end;i++){
-            List<TreeNode> leftTrees = generate(start,i-1);
-            List<TreeNode> rightTrees = generate(i+1,end);
-            for(int j=0;j<leftTrees.size();j++){
-                for(int k=0;k<rightTrees.size();k++){
-                    TreeNode root = new TreeNode(i);
-                    root.left = leftTrees.get(j);
-                    root.right = rightTrees.get(k);
-                    roots.add(root);
+        for(int len = 1; len <= n; len++){
+            result[len] = new ArrayList<TreeNode>();
+            for(int j=0; j<len; j++){
+                for(TreeNode nodeL : result[j]){
+                    for(TreeNode nodeR : result[len-j-1]){
+                        TreeNode node = new TreeNode(j+1);
+                        node.left = nodeL;
+                        node.right = clone(nodeR, j+1);
+                        result[len].add(node);
+                    }
                 }
             }
         }
-        return roots;
+        return result[n];
     }
+
+    private TreeNode clone(TreeNode n, int offset){
+        if(n == null)
+            return null;
+        TreeNode node = new TreeNode(n.val + offset);
+        node.left = clone(n.left, offset);
+        node.right = clone(n.right, offset);
+        return node;
+    }
+
+    // recursive https://discuss.leetcode.com/topic/35005/java-2ms-solution-beats-92
+//    public List<TreeNode> generateTrees(int n) {
+//        if(n==0) return new ArrayList<TreeNode>();
+//        return generate(1,n);
+//
+//    }
+//
+//    public List<TreeNode> generate(int start,int end){
+//        if(start > end){
+//            List<TreeNode> list = new ArrayList<TreeNode>();
+//            list.add(null);
+//            return list;
+//        }
+//        if(start == end){
+//            List<TreeNode> list = new ArrayList<TreeNode>();
+//            list.add(new TreeNode(start));
+//            return list;
+//        }
+//
+//        List<TreeNode> roots = new ArrayList<TreeNode>();
+//        for(int i=start;i<=end;i++){
+//            List<TreeNode> leftTrees = generate(start,i-1);
+//            List<TreeNode> rightTrees = generate(i+1,end);
+//            for(int j=0;j<leftTrees.size();j++){
+//                for(int k=0;k<rightTrees.size();k++){
+//                    TreeNode root = new TreeNode(i);
+//                    root.left = leftTrees.get(j);
+//                    root.right = rightTrees.get(k);
+//                    roots.add(root);
+//                }
+//            }
+//        }
+//        return roots;
+//    }
 }
