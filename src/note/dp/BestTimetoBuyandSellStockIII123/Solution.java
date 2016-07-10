@@ -1,5 +1,6 @@
 package note.dp.BestTimetoBuyandSellStockIII123;
 
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 /**
@@ -34,10 +35,41 @@ public class Solution {
         return dp[trans][len-1];
     }
 
+
+    // The second method. forward and backward iterative
+    public int maxProfit2(int[] prices) {
+        int len = prices.length;
+        if(len<2) return 0;
+
+        int[] forward = new int[len];
+        forward[0]=0;
+        int min = prices[0];
+        for(int j=1;j<len;j++){
+            min = Integer.min(min,prices[j-1]);
+            forward[j] = Integer.max(forward[j-1],prices[j]-min);
+        }
+
+        int[] backward = new int[len];
+        backward[len-1]=0;
+        int max=prices[len-1];
+        for(int i=len-2;i>=0;i--){
+            max = Integer.max(max,prices[i]);
+            backward[i] = Integer.max(backward[i+1],max-prices[i]);
+        }
+
+        int res = 0;
+        for(int k=0;k<len;k++){
+            res  =Math.max(res,forward[k]+backward[k]);
+        }
+        return res;
+    }
+
+
+
     @Test
     public void test(){
         int[] prices = {7,1,5,3,6,4};
-        System.out.println(maxProfit(prices));
+        System.out.println(maxProfit2(prices));
     }
 
 }
