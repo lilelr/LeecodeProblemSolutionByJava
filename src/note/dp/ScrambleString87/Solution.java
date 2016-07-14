@@ -5,7 +5,7 @@ package note.dp.ScrambleString87;
  */
 public class Solution {
 
-    //  O（n^3)
+    //  exponential time
     public boolean isScramble(String s1, String s2) {
         if (s1.length() != s2.length()) return false;
         if (s1.equals(s2)) {
