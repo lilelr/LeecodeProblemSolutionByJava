@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by yuxiao on 7/3/16.
+ * https://leetcode.com/problems/unique-binary-search-trees-ii/
  */
 public class Solution {
 
@@ -19,20 +20,20 @@ public class Solution {
         }
     }
 
-//  https://discuss.leetcode.com/topic/2940/java-solution-with-dp
-    public  List<TreeNode> generateTrees(int n) {
-        List<TreeNode>[] result = new List[n+1];
+    //  https://discuss.leetcode.com/topic/2940/java-solution-with-dp
+    public List<TreeNode> generateTrees(int n) {
+        List<TreeNode>[] result = new List[n + 1];
         result[0] = new ArrayList<TreeNode>();
         result[0].add(null);
 
-        for(int len = 1; len <= n; len++){
+        for (int len = 1; len <= n; len++) {
             result[len] = new ArrayList<TreeNode>();
-            for(int j=0; j<len; j++){
-                for(TreeNode nodeL : result[j]){
-                    for(TreeNode nodeR : result[len-j-1]){
-                        TreeNode node = new TreeNode(j+1);
+            for (int j = 0; j < len; j++) {
+                for (TreeNode nodeL : result[j]) {
+                    for (TreeNode nodeR : result[len - j - 1]) {
+                        TreeNode node = new TreeNode(j + 1);
                         node.left = nodeL;
-                        node.right = clone(nodeR, j+1);
+                        node.right = clone(nodeR, j + 1);
                         result[len].add(node);
                     }
                 }
@@ -41,8 +42,8 @@ public class Solution {
         return result[n];
     }
 
-    private TreeNode clone(TreeNode n, int offset){
-        if(n == null)
+    private TreeNode clone(TreeNode n, int offset) {
+        if (n == null)
             return null;
         TreeNode node = new TreeNode(n.val + offset);
         node.left = clone(n.left, offset);

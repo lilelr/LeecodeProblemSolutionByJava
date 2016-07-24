@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * Created by yuxiao on 4/6/16.
+ * https://leetcode.com/problems/ugly-number-ii/
  */
 public class Solution {
 
@@ -41,7 +42,7 @@ public class Solution {
         return ans.get(n - 1);
     }
 
-    //313 58ms  O(kN)
+    //313 58ms  O(kN)  https://leetcode.com/problems/super-ugly-number/
     public int nthSuperUglyNumber(int n, int[] primes) {
 
         if (n == 1) return 1;
