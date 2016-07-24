@@ -1,0 +1,8 @@
+1 寻找动态规划动态变化上的前进方向来源
+如 MinimumPathSum64
+ * Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+ // Making progress depends only two move. Moving down or moving right.
+   resGrid[i][j] = Math.min(resGrid[i - 1][j], resGrid[i][j - 1]) + grid[i][j];
+ 然后引入最大最小值,求解
+
+

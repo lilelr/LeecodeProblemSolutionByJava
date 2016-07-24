@@ -23,6 +23,7 @@ public class Solution {
                     } else if (j == 0) {
                         resGrid[i][0] = resGrid[i - 1][0] + grid[i][j];
                     } else {
+                        // Making progress depends only two move. Moving down or moving right.
                         resGrid[i][j] = Math.min(resGrid[i - 1][j], resGrid[i][j - 1]) + grid[i][j];
                     }
                 }
