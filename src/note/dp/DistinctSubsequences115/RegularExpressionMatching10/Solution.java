@@ -14,41 +14,45 @@ public class Solution {
 //    2, If p.charAt(j) == '.' : dp[i][j] = dp[i-1][j-1];
 //    3, If p.charAt(j) == '*':
 //    here are two sub conditions:
-//            1   if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]  //in this case, a* only counts as empty
-//            2   if p.charAt(i-1) == s.charAt(i) or p.charAt(i-1) == '.':
+//            1   if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]
+    // in this case, a* only counts as empty
+//            2   if p.charAt(j-1) == s.charAt(i) or p.charAt(j-1) == '.':
 //    dp[i][j] = dp[i-1][j]    //in this case, a* counts as multiple a
 //    or dp[i][j] = dp[i][j-1]   // in this case, a* counts as single a
 //    or dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty
     public boolean isMatch(String s, String p) {
-        if(s == null || p == null){
+        if (s == null || p == null) {
             return false;
         }
 
-        boolean[][] dp  = new boolean[s.length()+1][p.length()+1];
+        boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
         dp[0][0] = true;
-        for(int i=0;i<p.length();i++){
-            if(p.charAt(i)== '*' && dp[0][i-1]){
-                dp[0][i+1] = true; // s ="a"  p="a*" i=1
+        for (int i = 0; i < p.length(); i++) {
+            if (p.charAt(i) == '*' && dp[0][i - 1]) {
+                //// s =""  p="a*" i=1 dp[0][0] =true
+                //      dp[0][1] = false
+                //                     dp[0][2] = true
+                dp[0][i + 1] = true;
             }
         }
 
-        for(int i=0;i<s.length();i++){
-            for(int j=0;j<p.length();j++){
-                if(p.charAt(j) == '.'){
-                    dp[i+1][j+1] = dp[i][j];
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < p.length(); j++) {
+                if (p.charAt(j) == '.') {
+                    dp[i + 1][j + 1] = dp[i][j];
                 }
 
-                if(p.charAt(j) == s.charAt(i)){
-                    dp[i+1][j+1] = dp[i][j];
+                if (p.charAt(j) == s.charAt(i)) {
+                    dp[i + 1][j + 1] = dp[i][j];
                 }
 
-                if(p.charAt(j) == '*'){
+                if (p.charAt(j) == '*') {
                     // s= "abjc" p = "ab*" i=2 ,j=2 dp[3][3]=dp[3][1]
-                    if(p.charAt(j-1) != s.charAt(i) && p.charAt(j-1) != '.'){
-                        dp[i+1][j+1] = dp[i+1][j-1];
-                    } else{
+                    if (p.charAt(j - 1) != s.charAt(i) && p.charAt(j - 1) != '.') {
+                        dp[i + 1][j + 1] = dp[i + 1][j - 1];
+                    } else {
                         // s= "abbc" p = "ab*" i=2 ,j=2 dp[3][3]=(dp[3][2]||dp[2][3]||dp[3][1]
-                        dp[i+1][j+1] = (dp[i+1][j] || dp[i][j+1] || dp[i+1][j-1]);
+                        dp[i + 1][j + 1] = (dp[i + 1][j] || dp[i][j + 1] || dp[i + 1][j - 1]);
                     }
                 }
             }
@@ -57,39 +61,39 @@ public class Solution {
     }
 
     //2 backtracking 9ms  iterate from back
-    boolean isMatchRecursive(String s,String p){
-        int lenS = s.length(),lenP = p.length();
+    boolean isMatchRecursive(String s, String p) {
+        int lenS = s.length(), lenP = p.length();
         return backtrackingBack(s, lenS, p, lenP);
 
     }
 
-    boolean backtrackingBack(String s, int i,String p ,int j){
-        if(i==0 && j==0) return true;
-        if(i!=0 && j==0) return false;
-        if(i ==0 && j!=0){
+    boolean backtrackingBack(String s, int i, String p, int j) {
+        if (i == 0 && j == 0) return true;
+        if (i != 0 && j == 0) return false;
+        if (i == 0 && j != 0) {
             // in this case only p = "c*c*c*" this pattern can match null string
-            if(p.charAt(j-1) == '*'){
-                return  backtrackingBack(s, i, p, j - 2);
+            if (p.charAt(j - 1) == '*') {
+                return backtrackingBack(s, i, p, j - 2);
             }
             return false;
         }
 
         // now both i and jj are not null
-        if(s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.' ){
+        if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
             return backtrackingBack(s, i - 1, p, j - 1);
-        } else if(p.charAt(j-1) == '*'){
+        } else if (p.charAt(j - 1) == '*') {
             // two cases: determines on whether p[j-2] == s[i-1]
             // first p[j-2]* matches zero characters of p
             //            // s = ab   p = ab* i=2,j=3
 
-            if(backtrackingBack(s, i, p, j - 2)) return true;
+            if (backtrackingBack(s, i, p, j - 2)) return true;
 
             // second consider whether p[j-2] == s[i-1] , if true, then s[i-1] is matched, move to backtracking(i-1,j)
             // s = abb   p = ab* i=3,j=3
-            if(p.charAt(j-2) == s.charAt(i-1) || p.charAt(j-2) == '.'){
-                return backtrackingBack(s, i - 1,p,j);
+            if (p.charAt(j - 2) == s.charAt(i - 1) || p.charAt(j - 2) == '.') {
+                return backtrackingBack(s, i - 1, p, j);
             }
-            return  false;
+            return false;
         }
 
         return false;
@@ -120,10 +124,12 @@ public class Solution {
     }
 
     @Test
-    public void test(){
-        String s= "abfc";
-        String p="ab*";
-        boolean res = isMatch(s,p);
+    public void test() {
+//        String s= "abfc";
+//        String p="ab*";
+        String s = "";
+        String p = "a*";
+        boolean res = isMatch(s, p);
         System.out.println(res);
     }
 }
