@@ -7,7 +7,7 @@ import org.junit.Test;
  */
 public class Solution {
     //[思路] http://blog.csdn.net/xudli/article/details/46371673
-//    dynamic programing.  以当前点(x,y) = '1' 为右下角的最大正方形的边长f(x,y) = min( f(x-1,y), f(x,y-1), f(x-1,y-1)) + 1.
+//    dynamic programing.  以当前点(x,y) = '1' 为右下角的最大正方形(squre)的边长f(x,y) = min( f(x-1,y), f(x,y-1), f(x-1,y-1)) + 1.
 //    递推公式已建立, dp就自然而然了.
     public int maximalSquare(char[][] matrix) {
         int area = 0;
