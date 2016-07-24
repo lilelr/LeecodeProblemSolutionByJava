@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * Created by yuxiao on 7/13/16.
+ * https://leetcode.com/problems/burst-balloons/
  */
 public class Solution {
     //https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations
@@ -54,7 +55,8 @@ public class Solution {
 
     @Test
     public void test() {
-        int[] iNums = {3, 1, 5, 1, 8};
+//        int[] iNums = {3, 1, 5, 1, 8};
+        int[] iNums = {3, 4, 5};
         System.out.println(maxCoins(iNums));
     }
 }
