@@ -8,6 +8,7 @@ d[0][2] = 2
 d[0][0] = 0
 d[1][0] = 1
 
+i=0,j=0
 minValue = min(d[1][0],d[0][1]) = 1
 cost = word1.charAt(i) == word2.charAt(j) ? 0 : 1;   i==j==0
 cost = 1
