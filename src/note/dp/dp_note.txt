@@ -5,4 +5,21 @@
    resGrid[i][j] = Math.min(resGrid[i - 1][j], resGrid[i][j - 1]) + grid[i][j];
  然后引入最大最小值,求解
 
+2 for 循环中动态规划
+  引入递归,如题 Scramble String 87
+    for (int i = 1; i < len; i++) {
+              if (isScramble(s1.substring(0, i), s2.substring(len - i))
+                      && isScramble(s1.substring(i), s2.substring(0, len - i))) {
+                  return true;
+              }
+              if (isScramble(s1.substring(0, i), s2.substring(0, i))
+                      && isScramble(s1.substring(i), s2.substring(i))) {
+                  return true;
+              }
+    }
+
+  遍历每一项时,有时把当前遍历项作为动态规划的最后变化的那一步,会产生新的思路.
+  当前项的左右两边递归时,注意控制好递归的出口条件,条件如长度一致/元素相同/题意设置的条件相同/或者元素为空
+   这种for循环中的动态规划,算法复杂度有可能是指数级别的.
+
 

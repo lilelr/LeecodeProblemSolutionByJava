@@ -2,6 +2,7 @@ package note.dp.ScrambleString87;
 
 /**
  * Created by yuxiao on 7/14/16.
+ * https://leetcode.com/problems/scramble-string/
  */
 public class Solution {
 
