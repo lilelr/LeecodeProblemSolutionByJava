@@ -32,5 +32,20 @@ public class Solution {
         return ans;
     }
 
+    public int majorityElementByMooreVoteAlgorithm(int[] nums){
+        int count=0, ans =0;
+        for(int num:nums){
+            if(count==0){
+                ans = num;
+                count=1;
+            }else if(ans == num){
+                count++;
+            }else{
+                count--;
+            }
+        }
+        return ans;
+    }
+
 
 }
