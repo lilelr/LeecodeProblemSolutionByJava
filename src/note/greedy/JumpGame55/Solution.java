@@ -4,11 +4,12 @@ import org.junit.Test;
 
 /**
  * Created by yuxiao on 8/3/16.
+ * https://leetcode.com/problems/jump-game/
  */
 public class Solution {
     private boolean isCanJump;
 
-//    O(n)
+//    O(n)  https://discuss.leetcode.com/topic/19931/6-line-java-solution-in-o-n
     public boolean canJump(int[] nums) {
 //        int lastIndex = nums.length - 1;
 //        if(lastIndex <=0) return true;
