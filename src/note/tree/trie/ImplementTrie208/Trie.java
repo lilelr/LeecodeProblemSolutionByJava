@@ -1,7 +1,8 @@
-package note.tree;
+package note.tree.trie.ImplementTrie208;
 
 /**
  * Created by yuxiao on 16/4/19.
+ * https://leetcode.com/problems/implement-trie-prefix-tree/
  */
 class TrieNode {
     boolean isEnd;
@@ -39,13 +40,25 @@ public class Trie {
     public boolean startsWith(String prefix) {
         return search(prefix, 2);
     }
+
+    /**
+     *
+     * @param str the  word need to search
+     * @param type type 1 represents search(word,1);type 2 represents startsWith(prefix)
+     * @return  whether the trie has the word
+     */
     private boolean search(String str, int type) {
         TrieNode current = root;
         int i=-1, L=str.length();
         while(++i<L) {
             int id = str.charAt(i) - 'a';
-            if((current=current.children[id]) == null) return false;
+            // change the current node to its one child
+            if((current=current.children[id]) == null){
+                return false;
+            }
         }
+        // if current.isEnd is not true, search(word) will return false
+        // while startsWith(prefix) return true
         return type==1 ? current.isEnd : true;
     }
 }
