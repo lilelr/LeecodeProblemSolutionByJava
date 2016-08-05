@@ -1,4 +1,4 @@
-package note.tree.binarytree.CountCompleteTreeNodes222;
+package note.BinaryTree.CountCompleteTreeNodes222;
 
 import org.junit.Test;
 

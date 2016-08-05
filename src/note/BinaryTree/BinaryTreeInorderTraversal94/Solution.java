@@ -1,4 +1,4 @@
-package note.tree.BinaryTreeInorderTraversal94;
+package note.BinaryTree.BinaryTreeInorderTraversal94;
 
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ public class Solution {
         }
     }
 
-    //  Morris traversal algorithm complex O(n) space complex O(l)
+    //  Morris traversal algorithm complex O(n) and space complex O(l)
     public List<Integer> inorderTraversal2(TreeNode root){
         List<Integer> list = new ArrayList<>();
         if(root == null) return list;
