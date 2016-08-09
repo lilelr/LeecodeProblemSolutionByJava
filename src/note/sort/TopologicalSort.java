@@ -1,4 +1,4 @@
-package note;
+package note.sort;
 
 import java.util.ArrayList;
 import java.util.List;
