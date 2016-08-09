@@ -24,11 +24,11 @@ public class Solution {
         }
     }
 
-    // return ListNode[4]
-    // ListNode[0] -> start of smaller list, null if none
-    // ListNode[1] -> start of pivot list (contains duplicates of pivot values)
-    // ListNode[2] -> end of pivot list
-    // ListNode[3] -> start of bigger list, null if none
+    // return LinkList[4]
+    // LinkList[0] -> start of smaller list, null if none
+    // LinkList[1] -> start of pivot list (contains duplicates of pivot values)
+    // LinkList[2] -> end of pivot list
+    // LinkList[3] -> start of bigger list, null if none
     // Assume the input head must not be null, already check nullness in the caller
     private ListNode[] partition(ListNode head) {
         ListNode[] res = new ListNode[4];
@@ -74,11 +74,11 @@ public class Solution {
         return res;
     }
 
-    // return ListNode[2]
-    // ListNode[0] -> start non-null node of sorted list
-    // ListNode[1] -> end non-null node of sorted list
-    // Note that if none, both ListNode[0] and ListNode[1] are null
-    // if there is only one node, ListNode[0]==ListNode[1]
+    // return LinkList[2]
+    // LinkList[0] -> start non-null node of sorted list
+    // LinkList[1] -> end non-null node of sorted list
+    // Note that if none, both LinkList[0] and LinkList[1] are null
+    // if there is only one node, LinkList[0]==LinkList[1]
     private ListNode[] quickSortList(ListNode head) {
         ListNode[] res = new ListNode[2];
 
@@ -107,7 +107,7 @@ public class Solution {
         return res;
     }
 
-//    public ListNode sortList(ListNode head) {
+//    public LinkList sortList(LinkList head) {
 //        return quickSortList(head)[0];
 //    }
 

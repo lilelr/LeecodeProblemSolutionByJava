@@ -87,12 +87,12 @@ public class LRUCache {
         }
     }
 
-//    public ListNode getNode(int key) {
-//        ListNode p = this.head.next;
+//    public LinkList getNode(int key) {
+//        LinkList p = this.head.next;
 //        while (p != head) {
 //            if (p.key == key) {
-//                ListNode preOfP = p.pre;
-//                ListNode nextOfP = p.next;
+//                LinkList preOfP = p.pre;
+//                LinkList nextOfP = p.next;
 //                nextOfP.pre = preOfP;
 //                preOfP.next = nextOfP;
 //                p.pre = p.next = null;
