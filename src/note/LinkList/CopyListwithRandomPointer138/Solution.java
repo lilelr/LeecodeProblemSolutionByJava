@@ -37,7 +37,8 @@ public class Solution {
         iter = head;
         while (iter != null) {
             if (iter.random != null) {
-                iter.next.random = iter.random.next;
+                iter.next.random = iter.random.next; //  iter.random means the origin node
+                // while iter.random.next points at the copy node
             }
             iter = iter.next.next;
         }
