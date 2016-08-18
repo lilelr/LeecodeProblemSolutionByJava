@@ -7,6 +7,8 @@ import org.junit.Test;
  * https://leetcode.com/problems/first-missing-positive/
  */
 public class Solution {
+    // the key point : makes nums[i] = i
+    // that operation costs constant time to swap two number, and sorts the nums
     //https://discuss.leetcode.com/topic/25441/beat-100-fast-elegant-java-index-based-solution-with-explanation
     public int firstMissingPositive(int[] nums) {
 

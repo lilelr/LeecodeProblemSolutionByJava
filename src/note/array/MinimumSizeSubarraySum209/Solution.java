@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 /**
  * Created by yuxiao on 16/4/20.
+ * https://leetcode.com/problems/minimum-size-subarray-sum/
  */
 public class Solution {
 

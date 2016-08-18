@@ -1,0 +1,6 @@
+FirstMissingPositvie41
+     排序思想
+    // the key point : makes nums[i] = i
+       // that operation costs constant time to swap two number, and sorts the nums
+
+    考虑逆序的情况,则是 nums[i] = len - i
