@@ -79,6 +79,9 @@ public class Solution {
                     int pos = i % len; //pos is the position calculated based on i
                     sum += gas[pos] - cost[pos];
                     if (sum < 0) {
+                        // that means if you start from any in-between station between
+                        // start and current index of i, you will fail, because when we
+                        // start, we have gas[start] - cost[start] > 0
                         start = i + 1;
                         break;
                     } else {

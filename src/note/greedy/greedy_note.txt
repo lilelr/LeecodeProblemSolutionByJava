@@ -1,0 +1,31 @@
+Best Time to Buy and Sell Stock 122
+for i=0;i<len;i++
+min = Math.min(min, prices[i]);
+
+
+Candy 135
+两次循环,第一次从0到len-1,第二次从len-1到0
+ O(N) Greedy     back and forth
+
+GasStation 134
+
+start 和 end 双指针的配合
+在环形数组中,当start失败时,end指针可以后退,直至start==end,返回此时的start%len 下标即可.充分利用
+环形数组中   while (start <= end) {} 遍历的特点
+
+Jump game 55
+贪心策略,善用 math.min和math.max最大函数
+  reachable = Math.max(reachable, i + nums[i]);
+   int reachable = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > reachable) return false;
+            reachable = Math.max(reachable, i + nums[i]);
+        }
+        return true;
+
+Jump Game 45
+   比较两个reachable 的不同从而得出最小的行进步伐数
+   if (reachable != preReachable) {
+                  count++;
+              }
+

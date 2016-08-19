@@ -49,7 +49,7 @@ public class Solution {
 
 //        int[] nums = new int[]{5,9,3,2,1,0,2,3,3,1,0,0};
 //        int[] nums = new int[]{2, 1};
-        int[] nums = new int[]{1,2,3};
+        int[] nums = new int[]{1, 2, 3};
         int[] nums1 = new int[]{2, 2, 3, 1, 1, 1};
         int[] nums2 = new int[]{7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3};
         int[] nums3 = new int[]{2, 3, 1, 1, 4};
