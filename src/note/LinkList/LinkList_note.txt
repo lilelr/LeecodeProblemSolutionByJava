@@ -1,0 +1,14 @@
+Add Two Numbers 2
+两个链表各自指针遍历,注意一个链表已遍历完,另一个还没结束的情况
+  while (l1 != null && l2 != null)
+  if (l1 != null)
+  if (l2 != null)
+
+  Copy List with Random Pointer 138
+  链表复制,第一次遍历可把新建的节点继续连接到当前链表上.
+  第二次遍历,复制新的random域,  iter.next.random = iter.random.next;
+  第三次遍历,新建链表与原有链表分离,并还原原有链表的节点链接关系
+
+   reverse Nodes in k-Group 25
+   链表节点的指针指向问题, 设立多指针遍历pre, p, r,s,方便操作
+
