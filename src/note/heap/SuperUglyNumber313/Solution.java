@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * Created by yuxiao on 4/27/16.
+ * https://leetcode.com/problems/super-ugly-number/
  */
 public class Solution {
         //https://leetcode.com/discuss/81411/java-three-methods-23ms-58ms-with-heap-performance-explained

@@ -1,0 +1,63 @@
+Find Median from Data Stream 295
+  使用两个堆,即Java中的优先队列.
+  一个最大堆,记录一个数组中处于中位数左边较小的数,其根节点为左边数中的最大值,即与中位数相邻的数.
+  一个最小堆,记录一个数组中处于中位数右边较大的数,其根节点为右边数中的最小值,也是与中位数相邻的数.
+  最大堆
+PriorityQueue<Integer> max = new PriorityQueue<Integer>(10, Collections.reverseOrder());
+
+  还用一个记录中位数的队列queue,记录中位数.
+
+  当addNum时,num与中位数相比,小于则放入最大堆,大于或等于则放入最小堆
+
+  然后两个堆的根元素与median队列三者进行个数调整,确保最大堆比最小堆的数的个数少1,确保总体数目为偶数时,
+   有 中位数 = (median.peek() + min.peek()) / 2.0
+
+  最大堆的数的个数比最小堆的数的个数多1,则
+  while (max.size() != 0 && max.size() + 1 > min.size()) {
+              min.offer(median.poll());
+              median.offer(max.poll());
+          }
+
+          while (min.size() != 0 && max.size() + 1 < min.size()) {
+              max.offer(median.poll());
+              median.offer(min.poll());
+          }
+
+
+   Sliding Window Maximum 239
+   用一个最大堆记录被遍历的元素的最大值.重要的一个方法是可以把需要的条件添加到最大堆的元素构造中.
+    private class Num implements Comparable<Num> {
+           int val;
+           int idx;
+
+
+           public Num(int val, int idx) {
+               this.val = val;
+               this.idx = idx;
+
+           }
+
+           @Override
+           public int compareTo(Num that) {
+               return that.val - this.val;
+           }
+       }
+
+   同样的思想可以运用到 Super Ugly Number 313 中. 用一个最小堆来保存之前ugly numbers,提高查找效率,从
+   O(n) 提高到 O(logn)
+   private class Num implements Comparable<Num> {
+           int val;
+           int idx;
+           int p;
+
+           public Num(int val,int idx,int p){
+               this.val = val;
+               this.idx = idx;
+               this.p = p;
+           }
+
+           @Override
+           public int compareTo(Num that) {
+               return this.val - that.val;
+           }
+       }
