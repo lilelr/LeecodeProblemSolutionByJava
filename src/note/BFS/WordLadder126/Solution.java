@@ -52,6 +52,7 @@ public class Solution {
             {
                 foundLadders.add(node);
                 shortestPathLevel = node.level;
+                // when find one solution, we stop continuing to scan the next level
                 continue;
             }
 

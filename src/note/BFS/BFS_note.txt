@@ -1,5 +1,13 @@
 word Ladder 126
-the important point is that we construct the undirected map in the process of BFS
+the important point is that we construct the undirected map in the process of BFS, because we have known the begin and the end node, and
+  //if current word can mutate into end word, we are done, ladder is found, it is shortest because of BSF
+            if(mutations.contains(end))
+            {
+                foundLadders.add(node);
+                shortestPathLevel = node.level;
+                // when find one solution, we stop continuing to scan the next level
+                continue;
+            }
 
 Clone Graph 133
- utilize the hashMap to construct a cline map
+ utilize the hashMap to construct a  map
