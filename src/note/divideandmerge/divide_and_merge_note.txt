@@ -1,0 +1,22 @@
+Count of Range Sum 327
+  array O(n*logn*logn)
+
+The Skyline Problem 218  *
+  使用负号区分出两种不同点,起始点和终点
+    // start point has negative height value
+              height.add(new int[]{b[0], -b[2]});
+    // end point has normal height value
+              height.add(new int[]{b[1], b[2]});
+
+    排序时,使用limba 表达式,因为之前已用符号区分出两种点,所以排序时,会先按照起始点排序好区间
+     // sort $height, based on the first value, if necessary, use the second to
+            // break ties
+            Collections.sort(height, (a, b) -> {
+                if (a[0] != b[0])
+                    return a[0] - b[0];
+                return a[1] - b[1];
+            });
+
+
+      // Use a maxHeap to store possible heights
+             Queue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));

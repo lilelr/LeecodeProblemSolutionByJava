@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * Created by yuxiao on 7/29/16.
+ * https://leetcode.com/problems/the-skyline-problem/
  */
 public class Solution {
 
