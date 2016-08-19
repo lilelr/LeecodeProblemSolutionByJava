@@ -21,6 +21,7 @@ class TreeNode {
 }
 
 public class Solution {
+    //  count the total number of nodes of  left and  right side of the root
     public int kthSmallest(TreeNode root, int k) {
         int count = countNodes(root.left);
         if (k <= count) {
@@ -37,8 +38,7 @@ public class Solution {
         return 1 + countNodes(n.left) + countNodes(n.right);
     }
 
-
-
+    // inorder traversal  using stack
     public int kthSmallest2(TreeNode root,int k){
         Stack<TreeNode> stack = new Stack<>();
         while (root!=null){

@@ -24,7 +24,7 @@ public class Solution {
     //
     public int countNodes(TreeNode root) {
         if (root == null) return 0;
-        if(root.left==null) return 1;
+        if (root.left == null) return 1;
         int height = 0;
         int nodesums = 0;
         TreeNode node = root;
@@ -33,12 +33,12 @@ public class Solution {
             height++;
             node = node.left;
         }
-        return nodesums+countLastLevel(root,height);
+        return nodesums + countLastLevel(root, height);
 
     }
 
     public int countLastLevel(TreeNode root, int height) {
-        if(height==0 || root.left==null) return 0;
+        if (height == 0 || root.left == null) return 0;
         if (height == 1) {
             if (root.right != null) return 2;
             if (root.left != null) return 1;

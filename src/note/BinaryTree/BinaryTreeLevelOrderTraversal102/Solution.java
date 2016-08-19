@@ -7,6 +7,7 @@ import java.util.*;
 /**
  * Created by yuxiao on 4/2/16.
  * The level order of binary tree, including BFS and DFS.
+ * https://leetcode.com/problems/binary-tree-level-order-traversal/
  */
 
 public class Solution {
@@ -56,7 +57,7 @@ public class Solution {
         q.offer(root);
         while(!q.isEmpty()){
             List<Integer> tmp = new ArrayList<>();
-            int size = q.size();
+            int size = q.size(); // q.size() represents the size of nodes in the current level
             for (int i=0;i<size; i++){
                 TreeNode t = q.poll();
                 if(t.left !=null){
@@ -85,7 +86,7 @@ public class Solution {
 
     public void dfs(List<List<Integer>> list, TreeNode node, int deep){
         if(node==null) return;
-        if(list.size()==deep)
+        if(list.size()==deep) // during the first DFS process, list.size() represents the depth of current level
             list.add(new ArrayList<Integer>());
 
         list.get(deep).add(node.val);

@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by yuxiao on 16/4/18.
+ * https://leetcode.com/problems/binary-tree-right-side-view/
  *  Level order
  */
 public class Solution {
@@ -36,7 +37,6 @@ public class Solution {
             front++;
             TreeNode frontNode = queue.pop();
 
-
             if (frontNode.left != null) {
                 queue.offer(frontNode.left);
                 rear++;
@@ -55,7 +55,6 @@ public class Solution {
                 flag = true;
                 last = rear;
             } else {
-
 
                 flag = false;
             }

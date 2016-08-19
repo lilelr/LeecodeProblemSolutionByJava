@@ -1,0 +1,43 @@
+Binary Tree In Order Traversal 94
+     Morris Traversal   O(n) algorithm complexity and O(l) space
+
+Binary Tree Level Order Traversal 102
+     BFS and DFS
+    .......                        107
+    常用 与List有关的方法
+       res.add(0,tmp);    List<List<Integer>> res = new ArrayList<List<Integer>>();
+       Collections.reverse(counts);
+
+Binary Tree Postorder Traversal 145
+       stack
+
+Count Complete Tree Nodes 222
+
+      // in a complete tree, the index or height 0 of the first level (root) is 0. So the value of (1<<height) is equal to the total number of nodes of this level.
+      递归计算完全二叉树的最后一层节点数,  midNode 为root.left.right.right...
+       TreeNode node = root.left;
+              TreeNode midNode = node.right;
+              int curHeight = 2;
+              while (curHeight < height) {
+                  curHeight++;
+                  midNode = midNode.right;
+              }
+              if (midNode == null) {
+                  return countLastLevel(root.left, height - 1);
+              }
+              return (1 << height - 1) + countLastLevel(root.right, height - 1);
+
+Invert Binary Tree 226
+递归 invert
+   public void invert(TreeNode root){
+           if(root!=null){
+               invert(root.left); //递归 invert
+               invert(root.right); // 递归 invert
+               if(root.left==null && root.right==null) return;
+               TreeNode temp = root.left;
+               root.left = root.right;
+               root.right = temp;
+           }
+       }
+
+
