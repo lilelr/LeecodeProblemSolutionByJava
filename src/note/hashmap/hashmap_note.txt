@@ -1,0 +1,23 @@
+ Add and Search Word - Data structure design 211
+  private HashMap<Integer, List<String>> map = new HashMap<>();
+    Integer: represents the word.length
+    List<String>: represents the size of words which have the same length
+
+
+ Longest Substring Without Repeating Characters 3
+   作字典用处: 使用hashmap 记录字母和对应下标位置,每遇到同一字母的不同下标,则会更新字典中的最新下标
+   使用dupindex 索引不断地更新各个字母都不相同的substring 的起始下标
+
+ Max Points on a Line 149
+
+ 数学知识:使用斜率
+ HashMap<Double, Integer> map = new HashMap<>();
+   key: slope 斜率
+   Integer: 点的个数
+
+  注意有可能出现相同的点
+
+Palindrome Pairs 336
+  使用hashMap 存储,查找的效率为logn, 实现快速查找
+
+

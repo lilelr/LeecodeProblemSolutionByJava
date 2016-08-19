@@ -10,6 +10,7 @@ import java.util.*;
  */
 public class Solution {
     // HashMap O(nlogn*len)
+    // n represents the words.length and len  represents average length of all the word
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> result = new ArrayList<>();
         HashMap<String, Integer> hm = new HashMap<>();

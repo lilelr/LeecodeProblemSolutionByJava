@@ -43,12 +43,12 @@ class Solution {
                     map.replace(Double.MAX_VALUE, map.get(Double.MAX_VALUE) + 1);
                 } else {
                     double slope = 0;
-                    double disy = (double) points[j].y -(double)  points[i].y;
-                    double disx= (double) points[j].x - (double) points[i].x;
-                    if(disy==0.0){
+                    double disy = (double) points[j].y - (double) points[i].y;
+                    double disx = (double) points[j].x - (double) points[i].x;
+                    if (disy == 0.0) {
                         slope = 0;
-                    }else{
-                        slope = disy /  disx;
+                    } else {
+                        slope = disy / disx;
                     }
                     if (map.containsKey(slope)) {
                         map.put(slope, map.get(slope) + 1);
@@ -59,7 +59,7 @@ class Solution {
             }
             res = Integer.max(res, samePoints + 1);
             for (Double itemKey : map.keySet()) {
-                res = Integer.max(res, map.get(itemKey) + samePoints );
+                res = Integer.max(res, map.get(itemKey) + samePoints);
             }
         }
         return res;
@@ -80,7 +80,7 @@ public class Main {
 //        points[2] = new Point(1,-1);
         points[0] = new Point(0, 0);
         points[1] = new Point(1, 0);
-        points[2] = new Point(-1,0);
+        points[2] = new Point(-1, 0);
         Solution solution = new Solution();
         int res = solution.maxPoints(points);
         System.out.println(res);
