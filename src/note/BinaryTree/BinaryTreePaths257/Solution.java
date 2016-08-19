@@ -1,4 +1,4 @@
-package note.DFS.BinaryTreePaths;
+package note.BinaryTree.BinaryTreePaths257;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.Stack;
 
 /**
  * Created by yuxiao on 6/14/16.
+ * https://leetcode.com/problems/binary-tree-paths/
+ * Given a binary tree, return all root-to-leaf paths.
  */
 public class Solution {
 

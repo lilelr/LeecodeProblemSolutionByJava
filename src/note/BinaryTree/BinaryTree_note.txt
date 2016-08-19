@@ -10,6 +10,10 @@ Binary Tree Level Order Traversal 102
 
 Binary Tree Postorder Traversal 145
        stack
+Binary Tree Paths 257
+Given a binary tree, return all root-to-leaf paths.
+   postOrder using stack
+   stack stores its parent nodes to the root
 
 Count Complete Tree Nodes 222
 
@@ -40,4 +44,40 @@ Invert Binary Tree 226
            }
        }
 
+Binary Tree Maximum Path Sum 124
 
+递归计算
+   1.定义递归出口, 一般为叶子节点或null节点
+   if (root == null) return Integer.MIN_VALUE;
+           if(root.left == null && root.right ==null){
+               // it is a leaf, every time find a leave,update max;
+               if(root.val > maxSum) maxSum = root.val;
+               return root.val;
+           }
+   2. 递归
+           int value = root.val; // this value become a new leaf
+           int left = helper(root.left);
+           int right = helper(root.right);
+
+Sum Root to Leaf Numbers 129
+
+  preOrder
+
+  public void getPaths(TreeNode root, String str, List<Integer> res) {
+          if (root == null) return;
+          if (str.equals("")) {
+              str += root.val;
+          } else {
+              str += root.val;
+          }
+          if (root.left == null && root.right == null) {
+              res.add(Integer.valueOf(str));
+              return;
+          }
+          if (root.left != null) {
+              getPaths(root.left, str, res);
+          }
+          if (root.right != null) {
+              getPaths(root.right, str, res);
+          }
+      }

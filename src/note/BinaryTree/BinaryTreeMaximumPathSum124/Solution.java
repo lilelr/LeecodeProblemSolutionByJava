@@ -1,11 +1,10 @@
-package note.DFS.BinaryTreeMaximumPathSum124;
+package note.BinaryTree.BinaryTreeMaximumPathSum124;
 
 import org.junit.Test;
 
-import java.util.*;
-
 /**
  * Created by yuxiao on 6/14/16.
+ * https://leetcode.com/problems/binary-tree-maximum-path-sum/
  */
 public class Solution {
     //https://leetcode.com/discuss/91471/elegant-java-1ms-dfs-solution-beat-99-8%25-with-explanation
@@ -70,7 +69,7 @@ public class Solution {
         if(left>0) value = left+root.val;
         if(right+root.val > value) value = right+root.val;
 
-        // We should notice that hte value of new leaf should be
+        // We should notice that the value of new leaf should be
         // Math.max(ancestor.val + left,ancestor.va+right,ancestor.val).
         // The new leave must contains the ancestor, and it cannot contain both left leaf and right left.
         if(left+right+root.val > maxSum) maxSum = left+right+root.val;
