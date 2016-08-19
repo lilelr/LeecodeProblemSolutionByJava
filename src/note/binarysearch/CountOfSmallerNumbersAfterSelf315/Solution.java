@@ -66,6 +66,7 @@ public class Solution {
 
     // Solution2 Using rank  46ms  O(nlogn)
 //    https://leetcode.com/discuss/87132/bst-in-java-using-rank
+    // rank represents the total number of nodes whose values are less than the key
     public List<Integer> countSmaller2(int[] nums) {
         BST<Integer> bst = new BST();
         List<Integer> counts = new ArrayList<Integer>(nums.length);
@@ -87,7 +88,7 @@ public class Solution {
             private int n;
             private Node left;
             private Node right;
-            private int count;
+            private int count; // represents the size of the nuber which has the same key.
 
             public Node(Key key, int n, int count) {
                 this.n = n;

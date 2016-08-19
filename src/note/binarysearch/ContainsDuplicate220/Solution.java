@@ -4,8 +4,10 @@ import java.util.*;
 
 /**
  * Created by yuxiao on 4/26/16.
+ * https://leetcode.com/problems/contains-duplicate-iii/
  */
 public class Solution {
+    // binary  search tree
     public class TreeNode{
         public long val;
         TreeNode left;
@@ -14,7 +16,6 @@ public class Solution {
             val = x;
         }
     }
-
 
 
     private TreeNode add(TreeNode root, TreeNode nNode) {
@@ -76,6 +77,7 @@ public class Solution {
         }
     }
 
+    // the key point is to make sure the total number of nodes of BSTree is k
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         if(k < 1 || t < 0 || nums.length <= 1) {
             return false;
@@ -86,11 +88,13 @@ public class Solution {
         TreeNode root = null;
         root = add(root, map[0]);
         for(int i = 1; i < len; i++) {
+            // because BSTree's total number of nodes is k, so only need to search
             if(search(root, (long)nums[i], t)) {
                 return true;
             }
             map[i] = new TreeNode((long)nums[i]);
             if(i - k >= 0) {
+                // delete the node whose index is less than i-k
                 root = delete(root, map[i-k]);
             }
             root = add(root, map[i]);

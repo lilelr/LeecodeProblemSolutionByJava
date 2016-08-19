@@ -1,0 +1,13 @@
+CounttainsDuplicate220
+当有两个以上的限制条件时,如本题中
+Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
+
+可以考虑特定数据结构的节点数目满足一个特定条件的前提下,再结合相关算法满足第二个条件.如可限制二分查找树的节点数目为k
+
+219 题Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
+  也是同样的道理. 限制hashmap 的size 大小为k, 可以避免不必要的存储,和 memory limited
+
+
+Count Of Smaller Numbers After Self 315
+BST in JAVA - using Rank
+    // rank represents the total number of nodes whose values are less than the key
