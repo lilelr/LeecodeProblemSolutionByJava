@@ -6,10 +6,12 @@ import java.util.*;
 
 /**
  * Created by yuxiao on 6/15/16.
+ * https://leetcode.com/problems/word-ladder-ii/
  */
 public class Solution {
     //https://leetcode.com/discuss/82139/accepted-solution-focus-readability-explanaition-approach
     private HashSet<String> words;
+    // undirected map
     private HashMap<String, Integer> visited = new HashMap<String, Integer>();
     private List<List<String>> results = new ArrayList<List<String>>();
 
@@ -21,12 +23,14 @@ public class Solution {
         return this.results;
     }
 
+    // the important point is that we construct the undirected map in the process of BFS
     public void bfs(String start, String end)
     {
         Queue<Node> q = new LinkedList<Node>();
 
         q.offer(new Node(null,start));
 
+        // record the possible solutions
         List<Node> foundLadders = new ArrayList<>();
         Integer shortestPathLevel = null;
 
@@ -37,9 +41,10 @@ public class Solution {
             //if this node forms a ladder longer than we already found, skip it.
             if(shortestPathLevel !=null && node.level > shortestPathLevel) continue;
 
-            //for each word remember the level in a ladder it was first found at
+            //for each word ,remember the level in a ladder it was first found at
             this.visited.put(node.word, node.level);
 
+            // get possible mutations of the specific node
             Set<String> mutations = getPossibleMutations(node.word);
 
             //if current word can mutate into end word, we are done, ladder is found, it is shortest because of BSF
@@ -56,6 +61,7 @@ public class Solution {
                 Integer visited_level = this.visited.get(mutation);
                 if(visited_level != null && visited_level <= node.level) continue;
 
+                // when construct a newnode, node points at its parent, mutation represents its word
                 Node nextNode = new Node(node, mutation);
                 q.offer(nextNode);
             }
@@ -64,10 +70,12 @@ public class Solution {
         //construct all ladders from found nodes
         for(Node node:foundLadders)
         {
+            // remember that the node in foundLadders represents the previous word of the end word
             ArrayList<String> path = new ArrayList<>(Arrays.asList(node.word, end));
             while(node.parent != null)
             {
                 node = node.parent;
+                // insert from the head
                 path.add(0, node.word);
             }
             results.add(path);
@@ -75,6 +83,7 @@ public class Solution {
     }
 
     private HashMap<String, Set<String>> possibleMutations = new HashMap<String, Set<String>>();
+    // get mutations of the specific word
     private Set<String> getPossibleMutations(String word)
     {
         Set<String> mutations = possibleMutations.get(word);
@@ -91,6 +100,7 @@ public class Solution {
     }
 
     private static char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+    // get  mutations of the specific word at charPosition
     private List<String> getMutations(String word, int charPosition)
     {
         List<String> mutations = new ArrayList<String>();
@@ -115,6 +125,7 @@ public class Solution {
     private class Node{
         public final String word;
         public final Node parent;
+        // store the level relative to the first node
         public final int level;
 
         public Node(Node parent, String word)
