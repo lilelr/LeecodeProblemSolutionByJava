@@ -1,0 +1,16 @@
+Basic Calculator 224
+   以符号 +,— 为中心,确定下一个数的正负. 遇到左括号,先压栈;遇到右括号,出栈
+
+basic Calculator II 227
+  同样以符号 +,- 为中心,确定下一个数的正负,不同的是,因为有先算乘除,后算加减,因此遇到正负数先入栈,遇到乘除先弹栈计算后,结果入栈
+
+150. Evaluate Reverse Polish Notation
+  利用栈来计算逆波兰表达式,注意减法或除法时,可以弹栈两次,得出被减数与减数.
+
+225. Implement Stack using Queues
+   Java 中可用双端队列来模拟栈
+
+
+84. Largest Rectangle in Histogram
+   stack 记录递增的条形柱的高度,一旦遇到矮的高度,马上弹栈,取栈顶元素计算矩形面积. 注意弹出一个元素后,新的栈顶元素仍然可能比下一个元素高,
+   因此继续计算面积.
