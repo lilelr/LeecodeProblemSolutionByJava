@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by yuxiao on 16/4/21.
+ * https://leetcode.com/problems/3sum-closest/
  */
 public class Solution {
     public int threeSumClosest(int[] nums, int target) {

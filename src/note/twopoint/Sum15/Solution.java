@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by yuxiao on 16/4/21.
+ * https://leetcode.com/problems/3sum/
  */
 public class Solution {
     // O(n^2) two points   It is also an good example using do{}while(*); compared with while(*);
@@ -18,37 +19,37 @@ public class Solution {
         if (len < 3) return res;
 
         Arrays.sort(nums);
-        int p1=0 ;
-        while (p1 <len-2){
-            int start = p1+1, end = len-1;
-            while (start<end) {
+        int p1 = 0;
+        while (p1 < len - 2) {
+            int start = p1 + 1, end = len - 1;
+            while (start < end) {
                 int sum = nums[start] + nums[end] + nums[p1];
                 if (sum == 0) {
                     res.add(Arrays.asList(nums[p1], nums[start], nums[end]));
 
-                    do{
+                    do {
                         end--;
-                    } while (end>start && nums[end] == nums[end+1]);
+                    } while (end > start && nums[end] == nums[end + 1]);
 
-                    do{
+                    do {
                         start++;
-                    } while (start< end && nums[start] == nums[start-1] );
+                    } while (start < end && nums[start] == nums[start - 1]);
 
-                } else if (sum >0){
-                    do{
+                } else if (sum > 0) {
+                    do {
                         end--;
-                    } while (end>start && nums[end] == nums[end+1]);
-                } else{
+                    } while (end > start && nums[end] == nums[end + 1]);
+                } else {
 
-                    do{
+                    do {
                         start++;
-                    } while (start< end && nums[start] == nums[start-1] );
+                    } while (start < end && nums[start] == nums[start - 1]);
                 }
             }
 
-            do{
+            do {
                 p1++;
-            } while (p1< len-2 && nums[p1] == nums[p1-1]);
+            } while (p1 < len - 2 && nums[p1] == nums[p1 - 1]);
         }
         return res;
 
@@ -84,7 +85,7 @@ public class Solution {
     @Test
     public void test() {
 //        int[] nums = {-1, 0, 1,-1,4,0};
-        int[] nums = {1,2,-3,-1,0};
+        int[] nums = {1, 2, -3, -1, 0};
         List<List<Integer>> res = threeSum(nums);
     }
 

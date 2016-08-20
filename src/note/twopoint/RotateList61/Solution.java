@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * Created by yuxiao on 16/4/21.
+ * https://leetcode.com/problems/rotate-list/
  */
 
 public class Solution {
@@ -19,21 +20,21 @@ public class Solution {
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        if (k==0 || head == null || head.next == null) return head;
+        if (k == 0 || head == null || head.next == null) return head;
 
         ListNode preHead = new ListNode(0);
         preHead.next = head;
         ListNode pre = null;
         ListNode p = head;
 
-        int len=0;
+        int len = 0;
         ListNode iterator = head;
-        while (iterator!=null){
+        while (iterator != null) {
             iterator = iterator.next;
             len++;
         }
-        k = k%len;
-        if(k == 0) return head;
+        k = k % len;
+        if (k == 0) return head;
         k--;
         boolean flag = true;
         while (k > 0 && p != null) {
