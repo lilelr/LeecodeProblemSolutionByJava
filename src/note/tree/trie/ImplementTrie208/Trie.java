@@ -23,9 +23,9 @@ public class Trie {
 
     public void insert(String word) {
         TrieNode current = root;
-        for(int i=0, L=word.length(); i<L; i++) {
+        for (int i = 0, L = word.length(); i < L; i++) {
             int id = word.charAt(i) - 'a';
-            if(current.children[id]==null) {
+            if (current.children[id] == null) {
                 current.children[id] = new TrieNode();
                 current.children[id].isEnd = false;
             }
@@ -37,29 +37,29 @@ public class Trie {
     public boolean search(String word) {
         return search(word, 1);
     }
+
     public boolean startsWith(String prefix) {
         return search(prefix, 2);
     }
 
     /**
-     *
-     * @param str the  word need to search
+     * @param str  the  word need to search
      * @param type type 1 represents search(word,1);type 2 represents startsWith(prefix)
-     * @return  whether the trie has the word
+     * @return whether the trie has the word
      */
     private boolean search(String str, int type) {
         TrieNode current = root;
-        int i=-1, L=str.length();
-        while(++i<L) {
+        int i = -1, L = str.length();
+        while (++i < L) {
             int id = str.charAt(i) - 'a';
             // change the current node to its one child
-            if((current=current.children[id]) == null){
+            if ((current = current.children[id]) == null) {
                 return false;
             }
         }
         // if current.isEnd is not true, search(word) will return false
         // while startsWith(prefix) return true
-        return type==1 ? current.isEnd : true;
+        return type == 1 ? current.isEnd : true;
     }
 }
 

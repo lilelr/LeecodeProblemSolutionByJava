@@ -21,7 +21,7 @@ public class Solution {
         TrieNode() {
             next = new TrieNode[26];
             index = -1;
-            list = new ArrayList<>();
+            list = new ArrayList<>(); // record the index of word whose prefix substring  from 0 to i is palindrome
         }
     }
 
@@ -47,6 +47,7 @@ public class Solution {
                 root.next[word.charAt(i) - 'a'] = new TrieNode();
             }
 
+            //if the prefix substring of word from 0 to i is palindrome, add its index to root.list.
             if (isPalindrome(word, 0, i)) {
                 root.list.add(index);
             }
@@ -76,6 +77,8 @@ public class Solution {
         }
     }
 
+
+    // judge whether word is palindrome
     private boolean isPalindrome(String word, int i, int j) {
         while (i < j) {
             if (word.charAt(i++) != word.charAt(j--)) return false;

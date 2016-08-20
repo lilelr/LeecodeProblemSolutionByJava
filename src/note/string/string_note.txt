@@ -3,3 +3,5 @@ Reverse Words In a String 151
  StringBuffer sb = new StringBuffer();
   sb.append(listStrs[i] + " ");
   sb.toString();
+
+   res.add(Arrays.asList(nums[p1], nums[start], nums[end]));

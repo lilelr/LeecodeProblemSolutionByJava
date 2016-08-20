@@ -77,6 +77,9 @@ public class Solution {
         return new ArrayList<>(res);
     }
 
+    // first locate the position, then judge if the position is out of board, afterwards,
+    // judge if the str is in our trie, subsequently, move up,move down, move left, move right,
+    // remember we need to backtrack, so the last operation is recovering the visited status.
     public void dfs(char[][] board, boolean[][] visited, String str, int x, int y, Trie trie) {
         if (x < 0 || x >= board.length || y < 0 || y >= board[0].length) return;
         if (visited[x][y]) return;

@@ -1,0 +1,53 @@
+binary indexed tree
+ 二分索引树,初始化一个数组的树的复杂度为（nlogn),空间复杂度为O(n)
+ 获取0到i之间所有树之和的getSum(i) 复杂度为O(logn)
+ 更新数组中第i个元素的值复杂度为 O(logn)
+
+307. Range Sum Query - Mutable  segment_tree
+  Given nums = [1, 3, 5]
+
+  sumRange(0, 2) -> 9
+  update(1, 2)
+  sumRange(0, 2) -> 8
+
+  For each node at index i, the left child is at index 2*i+1, right child at 2*i+2 and the parent is at (i-1)/2.
+
+  the total number of nodes will be 2*n-1, n leaves and n-1 interval nodes.
+  1 Find the sum of elements from index l to r where 0 <= l <= r <= n-1
+
+  2 Change value of a specified element of the array to a new value x. We need to do arr[i] = x where 0 <= i <= n-1.
+
+  both above operations in O(logn) time
+
+
+ Add and Search Word 211
+ trie 前缀树, 搜索结合递归
+ 其中, c == '.'时,我们需要尝试每一个节点
+ if (c != '.') {
+             if (node.branch[c - 'a'] == null) {
+                 return false;
+             }
+             return search(word, p + 1, node.branch[c - 'a']);
+         } else {
+             // c == '.', we need to try every letter
+             for (int i = 0; i < 26; i++) {
+                 if (node.branch[i] != null && search(word, p + 1, node.branch[i])) {
+                     return true;
+                 }
+             }
+         }
+
+Implement Trie 208 前缀树的实现
+
+336. Palindrome Pairs
+两个子串合并成回文字母串的求解
+  在构造前缀树的过程中,可以给节点添加额外的list,记录其部分子串是否构成回文
+
+
+Word Search II 212
+trie + dfs + backtracking
+
+用trie 记录待搜寻的单词,节约空间.
+矩阵的dfs 中,本题的判断边界和递归写法十分经典.
+另外,本题写法也是矩阵中backtracking 的经典写法.
+

@@ -51,36 +51,20 @@ public class WordDictionary {
     }
 
     private boolean search(String word, int p, TrieNode node) {
-//        if (p == word.length()) {
-//            return node.endHere;
-//        }
-//        char c = word.charAt(p);
-//        if (c != '.') {
-//            // node represents the previous node, while p represents the index of the current node
-//            if (node.branch[c - 'a'] == null) {
-//                return false;
-//            }
-//            return search(word, p + 1, node.branch[c - 'a']);
-//        } else {
-//            for (int i = 0; i < 26; ++i) {
-//                if (node.branch[i] != null && search(word, p + 1, node.branch[i])) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-        if(p == word.length()){
+
+        if (p == word.length()) {
             return node.endHere;
         }
         char c = word.charAt(p);
-        if(c != '.'){
-            if(node.branch[c - 'a'] == null){
+        if (c != '.') {
+            if (node.branch[c - 'a'] == null) {
                 return false;
             }
-            return search(word,p+1,node.branch[c-'a']);
-        }else{
-            for(int i=0;i<26;i++){
-                if(node.branch[i] != null && search(word,p+1,node.branch[i])){
+            return search(word, p + 1, node.branch[c - 'a']);
+        } else {
+            // c == '.', we need to try every letter
+            for (int i = 0; i < 26; i++) {
+                if (node.branch[i] != null && search(word, p + 1, node.branch[i])) {
                     return true;
                 }
             }
