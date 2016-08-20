@@ -1,0 +1,40 @@
+Insert Interval 57
+    排序及利用双指针,详见explanation.jpg
+     技巧:可在遍历过程修改list的item 内容,前指针指向被修改的内容.
+
+HIndex 274
+   bucket sort,可用作分类用.详见explanation.jpg
+   http://www.geeksforgeeks.org/bucket-sort-2/
+
+349. Intersection of Two Arrays
+    使用HashSet
+
+    Hashset 转换int[]
+            HashSet<Integer> resSet = new HashSet<>();
+            Integer[] tmpset = new Integer[len];
+                    resSet.toArray(tmpset);
+                    int[] res = new int[len];
+                    for(int i=0;i<len;i++){
+                        res[i] = tmpset[i];
+                    }
+
+179. Largest Number
+    Given a list of non negative integers, arrange them such that they form the largest number.
+    For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+
+
+        MyStrItem 类封装输入的item, 自定义其comparator ,public class ComparatorMyStrItem implements Comparator
+         Arrays.sort(ansItems, new ComparatorMyStrItem());
+
+
+Maximum Gap 164
+    空间复杂度较高. int数的前缀树. 树的构造花费O（n),因为一个数的节点最多有32次探索.
+    获取maximum Gap 的时间为 O(nlogn)
+
+    桶排序,用两组桶,一组桶记录区间内的最大值,一组桶记录区间的最小值,结合最大最小值巧妙的计算出两个相邻元素的gap.
+
+Merge Intervals 思想与Insert Interval 57相似
+
+Sort Colors 75
+
+双指针排序, 排序的过程中,发生交换后,当前指针可以停留在当前位置,因为交换后,当前位置的元素已经不同.

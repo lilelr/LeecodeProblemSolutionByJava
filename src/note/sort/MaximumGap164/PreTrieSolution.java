@@ -2,10 +2,11 @@ package note.sort.MaximumGap164;
 
 /**
  * Created by yuxiao on 16/6/3.
+ * https://leetcode.com/problems/maximum-gap/
  */
 public class PreTrieSolution {
     //https://leetcode.com/discuss/78234/java-o-n-easy-solution-using-trie-based-algorithm
-    // O(n)  15ms
+    //  O(nlogn)   15ms
     private class Trie {
         boolean isNum = false;
         Trie[] nexts = new Trie[2];
@@ -18,17 +19,18 @@ public class PreTrieSolution {
         Trie root = new Trie();
 
         // Build trie, takes O(n)
-        for(int num : nums) {
+        for(int num : nums) { // because each num takes at most 32 times to accomplish its node, that is O(l)
             appendNum(root, num, 1L << 32);
         }
 
-        // dfs of the trie, takes O(n)
+        // dfs of the trie, takes  O(nlogn)
         maxGap = 0;
         prev = null;
         maxGapSearch(root, 0);
         return maxGap;
     }
 
+//    O(l)
     private void appendNum(Trie root, int num, long currentBit) {
         if(currentBit > 0) {
             int bit = ((num & currentBit) == 0 ? 0 : 1);    // Can be either 0 or 1
@@ -41,6 +43,7 @@ public class PreTrieSolution {
         }
     }
 
+    //  O(nlogn)
     private void maxGapSearch(Trie root, int num) {
         if(root != null) {
             if(root.isNum) {        // Reaching the leave

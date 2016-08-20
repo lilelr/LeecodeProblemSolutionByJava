@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 /**
  * Created by yuxiao on 16/6/2.
+ * https://leetcode.com/problems/intersection-of-two-arrays/
  */
 public class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {

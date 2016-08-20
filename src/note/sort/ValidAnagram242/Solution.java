@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * Created by yuxiao on 16/6/2.
+ * https://leetcode.com/problems/valid-anagram/
  */
 public class Solution {
     public boolean isAnagram(String s, String t) {

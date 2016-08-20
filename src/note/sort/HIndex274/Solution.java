@@ -6,27 +6,28 @@ import java.util.Arrays;
 
 /**
  * Created by yuxiao on 16/6/4.
+ * https://leetcode.com/problems/h-index/
  */
 public class Solution {
     // bucket sort
     public int hIndex(int[] citations) {
         int len = citations.length;
-        int[] buckets = new int[len+1];
-        for(int i=0;i<len;i++){
-            if(citations[i] >= len){
+        int[] buckets = new int[len + 1];
+        for (int i = 0; i < len; i++) {
+            if (citations[i] >= len) {
                 buckets[len]++;
-            } else{
+            } else {
                 buckets[citations[i]]++;
             }
         }
 
-        int count=0;
-        int res=0;
-        for(int i=0;i<=len;i++){
-            count+= buckets[i];
-            int moreThanCur = len - count+buckets[i];
-            if(moreThanCur >= i){
-                res = Math.max(res,i);
+        int count = 0;
+        int res = 0;
+        for (int i = 0; i <= len; i++) {
+            count += buckets[i];
+            int moreThanCur = len - count + buckets[i];
+            if (moreThanCur >= i) {
+                res = Math.max(res, i);
             }
         }
 //        for(int val:buckets){
@@ -37,8 +38,8 @@ public class Solution {
     }
 
     @Test
-    public void test(){
-        int[] citations = {1,6,6,6,6,3,4};
+    public void test() {
+        int[] citations = {1, 6, 6, 6, 6, 3, 4};
         hIndex(citations);
     }
 }

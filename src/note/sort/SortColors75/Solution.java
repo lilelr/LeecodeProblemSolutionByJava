@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * Created by yuxiao on 16/6/3.
+ * https://leetcode.com/problems/sort-colors/
  */
 public class Solution {
     // two points
@@ -13,17 +14,17 @@ public class Solution {
     public void sortColors(int[] nums) {
 
         int start = 0;
-        int end = nums.length-1;
+        int end = nums.length - 1;
         int temp;
-        int i=0;
-        while (i< nums.length){
-            if(nums[i]==0 && i!=start){
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] == 0 && i != start) {
                 temp = nums[start];
                 nums[start] = nums[i];
                 nums[i] = temp;
                 start++;
-            } else if(nums[i]==2 && i<end){
-                temp= nums[end];
+            } else if (nums[i] == 2 && i < end) {
+                temp = nums[end];
                 nums[end] = nums[i];
                 nums[i] = temp;
                 end--;
@@ -31,14 +32,14 @@ public class Solution {
                 i++;
             }
         }
-        for(int val:nums){
+        for (int val : nums) {
             System.out.println(val);
         }
     }
 
     @Test
-    public void test(){
-        int[] nums = {0,1,1,0,2,0,1,2};
+    public void test() {
+        int[] nums = {0, 1, 1, 0, 2, 0, 1, 2};
         sortColors(nums);
     }
 }

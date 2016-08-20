@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 /**
  * Created by yuxiao on 16/6/3.
+ * https://leetcode.com/problems/maximum-gap/
  */
 public class Solution {
     // bucket sort http://baike.baidu.com/view/1784217.htm
@@ -20,10 +21,10 @@ public class Solution {
         }
         if (max == min)
             return 0;
-        int bucketSize = (max - min) / (len - 1);
+        int bucketSize = (max - min) / (len - 1); // calculate the size of bucket
         if (bucketSize == 0)
             bucketSize = 1;
-        int bucketCount = (max - min) / bucketSize + 1;
+        int bucketCount = (max - min) / bucketSize + 1; // calculate the count of buckets
         int[] left = new int[bucketCount];
         int[] right = new int[bucketCount];
         Arrays.fill(left, -1);
