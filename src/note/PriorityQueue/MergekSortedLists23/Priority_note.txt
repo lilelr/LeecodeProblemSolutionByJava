@@ -1,0 +1,28 @@
+23. Merge k Sorted Lists
+  方法一:利用优先队列来存储节点,提高查找效率到logN
+   // ascending 递增的优先队列,即最小堆
+          PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, new Comparator<ListNode>() {
+              @Override
+              public int compare(ListNode o1, ListNode o2) {
+                  if(o1.val < o2.val){
+                      return -1;
+                  } else if(o1.val == o2.val){
+                      return 0;
+                  }else{
+                      return 1;
+                  }
+              }
+          });
+
+   方法二: 归并排序的思想,两两链表合并,最后达成把所有链表合并成一个递增的链表.
+          算法复杂度为 O(nlogk) k为要合并的链表个数, n为合并成一个链表后的总结点数
+          运用到递归,注意递归出口.
+           private ListNode mergeK(ListNode[] lists, int low, int high) {
+                  if(low == high)
+                      return lists[low];
+                  if(low + 1 == high)
+                      return mergeTwo(lists[low], lists[high]);
+
+                  int mid = low + (high - low) / 2;
+                  return mergeTwo(mergeK(lists, low, mid), mergeK(lists, mid+1, high));
+              }

@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
 
 /**
  * Created by yuxiao on 7/26/16.
+ * https://leetcode.com/problems/merge-k-sorted-lists/
  */
 public class Solution {
 
