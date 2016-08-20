@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * Created by yuxiao on 8/9/16.
+ * https://leetcode.com/problems/zigzag-conversion/
  */
 public class Solution {
     public String convert(String s, int numRows) {
