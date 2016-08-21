@@ -1,4 +1,4 @@
-package problems.CourseSchedule207;
+package note.sort.CourseSchedule207;
 
 import org.junit.Test;
 
@@ -8,6 +8,7 @@ import java.util.Stack;
 
 /**
  * Created by yuxiao on 4/5/16.
+ * https://leetcode.com/problems/course-schedule/
  */
 public class Solution {
 

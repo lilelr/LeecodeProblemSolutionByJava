@@ -1,4 +1,4 @@
-package problems.CourseSchedule210;
+package note.sort.CourseSchedule210;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Stack;
 
 /**
  * Created by yuxiao on 4/5/16.
+ * https://leetcode.com/problems/course-schedule-ii/
  */
 public class Solution {
 

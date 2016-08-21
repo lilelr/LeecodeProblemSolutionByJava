@@ -39,4 +39,6 @@ Sort Colors 75
 
 双指针排序, 排序的过程中,发生交换后,当前指针可以停留在当前位置,因为交换后,当前位置的元素已经不同.
 
-TopologicalSort 拓扑排序
+Course Schedule 207,210
+TopologicalSort 拓扑排序.另外,这题利用list构建图也是经典用法.
+
