@@ -1,7 +1,8 @@
-package problems.DeleteNodeinaLinkedList237;
+package note.LinkList.DeleteNodeinaLinkedList237;
 
 /**
  * Created by yuxiao on 4/7/16.
+ * https://leetcode.com/problems/delete-node-in-a-linked-list/
  */
 
 
