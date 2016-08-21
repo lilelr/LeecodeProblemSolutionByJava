@@ -1,7 +1,8 @@
-package problems.CoinChange322;
+package note.dp.CoinChange322;
 
 /**
  * Created by yuxiao on 3/31/16. Dynamic Programming
+ * https://leetcode.com/problems/coin-change/
  */
 public class Solution {
     public int coinChange(int[] coins, int amount) {
@@ -13,6 +14,7 @@ public class Solution {
         }
 
         int len = coins.length;
+        // the array to calculate the minimum coins of special amount dynamically
         int[] ans = new int[amount + 1];
         ans[0] = 0;
         for (int i = 0; i < coins.length; i++) {
@@ -28,6 +30,7 @@ public class Solution {
             }
         }
 
+        // i represents the current amount
         for (int i = 1; i <= amount; i++) {
             for (int j = 0; j < len; j++) {
                 if (coins[j] <= i && ans[i - coins[j]] != Integer.MAX_VALUE) {
