@@ -1,9 +1,10 @@
-package problems.ConvertSortedListtoBinarySearchTree109;
+package note.BinaryTree.ConvertSortedListtoBinarySearchTree109;
 
 import org.junit.Test;
 
 /**
  * Created by yuxiao on 16/4/14.
+ * https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
  * Convert Sorted List to Binary Search Tree
  * 2ms
  */
@@ -43,6 +44,7 @@ public class Solution {
         int mid = 1, len;
         ListNode pre = head;
         ListNode p = head.next.next;
+        // scan once to point at the middle node
         while (p != null && p.next != null) {
             p = p.next.next;
             pre = pre.next;

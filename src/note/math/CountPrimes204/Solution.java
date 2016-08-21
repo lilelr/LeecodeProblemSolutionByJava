@@ -1,4 +1,4 @@
-package problems.CountPrimes204;
+package note.math.CountPrimes204;
 
 import org.junit.Test;
 
@@ -9,15 +9,16 @@ import java.util.List;
 /**
  * Created by yuxiao on 16/4/18.
  * https://leetcode.com/problems/count-primes/
+ * https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Algorithm_complexity
  */
 public class Solution {
-
-    public boolean isPrimes(List<Integer> primesList,int m){
+     // a method to judge prime
+    public boolean isPrimes(List<Integer> primesList, int m) {
         int len = primesList.size();
-        for(int i=0;i <len;i++){
-            if(m%primesList.get(i)==0){
+        for (int i = 0; i < len; i++) {
+            if (m % primesList.get(i) == 0) {
                 return false;
-            } else if(primesList.get(i)*primesList.get(i) > m){
+            } else if (primesList.get(i) * primesList.get(i) > m) {
                 return true;
             }
         }
@@ -25,17 +26,17 @@ public class Solution {
     }
 
     public int countPrimes(int n) {
-        if(n==0 || n==1) return 0;
-        if(n==2) return 0;
-        if(n==3) return 1;
-        if(n==4) return 2;
+        if (n == 0 || n == 1) return 0;
+        if (n == 2) return 0;
+        if (n == 3) return 1;
+        if (n == 4) return 2;
 
         List<Integer> primesList = new ArrayList<>();
         primesList.add(2);
         primesList.add(3);
-        int sum=2;
-        for(int i=5;i<n;i++){
-            if(isPrimes(primesList,i)){
+        int sum = 2;
+        for (int i = 5; i < n; i++) {
+            if (isPrimes(primesList, i)) {
                 sum++;
                 primesList.add(i);
             }
@@ -54,6 +55,7 @@ public class Solution {
         // to avoid repeatedly calling an expensive function sqrt().
         for (int i = 2; i * i < n; i++) {
             if (!isPrime[i]) continue;
+            // j = i*i+n*i = i*(i+n) ,so j is not prime
             for (int j = i * i; j < n; j += i) {
                 isPrime[j] = false;
             }
@@ -66,7 +68,7 @@ public class Solution {
     }
 
     @Test
-    public void test(){
+    public void test() {
         System.out.println(countPrimes(129));
         System.out.println(countPrimes(5));
     }
