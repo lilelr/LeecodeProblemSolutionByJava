@@ -1,9 +1,8 @@
-package problems.FlattenBinaryTreetoLinkedList114;
-
-import org.junit.Test;
+package note.BinaryTree.FlattenBinaryTreetoLinkedList114;
 
 /**
  * Created by yuxiao on 16/4/14.
+ * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
  */
 public class Solution {
 
@@ -19,21 +18,20 @@ public class Solution {
     }
 
     public void flatten(TreeNode root) {
-        if(root==null)    return;
+        if (root == null) return;
 
         flatten(root.left);
         flatten(root.right);
 
         TreeNode temp = root.right;
-        root.right=root.left;
-        root.left=null;
+        root.right = root.left;
+        root.left = null;
 
-        while(root.right!=null)
-            root=root.right;
+        while (root.right != null)
+            root = root.right;
 
-        root.right=temp;
+        root.right = temp;
     }
-
 
 
     public void flatten2(TreeNode root) {
@@ -41,9 +39,10 @@ public class Solution {
             return;
         helper(root);
     }
+
     //definetion: flatten the tree with this root and return the tail of its flattend list
 //invariant: tail musn't be null, root musn't be null
-    public TreeNode helper(TreeNode root){
+    public TreeNode helper(TreeNode root) {
         //at this moment, I can guarantee that root is not null
 
         //4 cases:
@@ -51,23 +50,20 @@ public class Solution {
         //2.have left child and right child is null
         //3.have right child and left child is null
         //4.have no children
-        if (root.left != null && root.right != null){
+        if (root.left != null && root.right != null) {
             TreeNode tmpRight = root.right;
             root.right = root.left;
             root.left = null;
             TreeNode tailOfLeft = helper(root.right);
             tailOfLeft.right = tmpRight;
             return helper(tmpRight);
-        }
-        else if (root.left != null && root.right == null){
+        } else if (root.left != null && root.right == null) {
             root.right = root.left;
             root.left = null;
             return helper(root.right);
-        }
-        else if (root.left == null && root.right != null){
+        } else if (root.left == null && root.right != null) {
             return helper(root.right);
-        }
-        else {
+        } else {
             return root;
         }
     }

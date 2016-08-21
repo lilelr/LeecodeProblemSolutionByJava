@@ -27,5 +27,14 @@ construct-binary-tree-from-preorder-and-inorder-traversal 105
              newHead = newHead.next;
          }
 
+114. Flatten Binary Tree to Linked List
+
+   分析题: 详细分情况讨论
+   1 root左右节点都有,结合递归求解
+   2 root 有左节点无右节点
+   3 root 无左节点有右节点
+   4 root 既无左节点又无右节点
+
+
 
 
