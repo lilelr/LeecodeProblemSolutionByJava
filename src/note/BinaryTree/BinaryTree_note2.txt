@@ -1,4 +1,7 @@
 Construct Binary Tree from Inorder and Postorder 106
 根据树的中序和后序遍历序列,利用递归构建二叉树. 递归出口为if语句对变量是否小于0的判断,递归方法一进入就构建一个新节点.
 
+construct-binary-tree-from-preorder-and-inorder-traversal 105
+根据树的先序和中序遍历序列,
+
 
