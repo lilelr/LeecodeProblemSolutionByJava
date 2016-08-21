@@ -1,15 +1,16 @@
-package problems.BitwiseANDofNumbersRange201;
+package note.math.BitwiseANDofNumbersRange201;
 
 import org.junit.Test;
 
 /**
  * Created by yuxiao on 16/4/18.
+ * https://leetcode.com/problems/bitwise-and-of-numbers-range/
  * https://leetcode.com/discuss/94705/two-lines-solution-just-a-math-problem-python-c-java
  */
 public class Solution {
     public int rangeBitwiseAnd(int m, int n) {
-       int t = (int) Math.ceil(Math.log(n-m+1)/Math.log(2));
-        return m&n >> t << t;
+        int t = (int) Math.ceil(Math.log(n - m + 1) / Math.log(2));
+        return m & n >> t << t;
 
     }
 
