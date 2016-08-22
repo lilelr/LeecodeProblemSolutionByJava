@@ -1,4 +1,4 @@
-package problems.HappyNumber202;
+package note.math.HappyNumber202;
 
 import org.junit.Test;
 
@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by yuxiao on 16/4/18.
+ * https://leetcode.com/problems/happy-number/
  */
 public class Solution {
     public boolean isHappy(int n) {

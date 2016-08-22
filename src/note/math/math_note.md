@@ -9,6 +9,14 @@ Count Primes 204
 计算质数, O(n(logn)(lognlogn))
  // j = i*i+n*i = i*(i+n) ,so j is not prime
 
+Happy Number 202
+   用list的contain方法判断是否包含重复元素
+   if(record.contains(n)) {
+         return false;
+   }
+
 Rectangle Area 223
 分情况讨论,多多考虑极端情况,如点相同
+
+
 
