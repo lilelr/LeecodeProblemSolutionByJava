@@ -1,7 +1,8 @@
-package problems.InsertionSortList147;
+package note.LinkList.InsertionSortList147;
 
 /**
  * Created by yuxiao on 4/9/16.
+ * https://leetcode.com/problems/insertion-sort-list/
  */
 public class Solution {
 

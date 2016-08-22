@@ -1,4 +1,4 @@
-package problems.IsomorphicStrings205;
+package note.string.IsomorphicStrings205;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -6,6 +6,7 @@ import java.util.Map;
 
 /**
  * Created by yuxiao on 16/4/19.
+ * https://leetcode.com/problems/isomorphic-strings/
  */
 public class Solution {
 
@@ -27,7 +28,7 @@ public class Solution {
         return true;
     }
 
-    //3 ms  great solution, so it uses the arrays to minic two hash table,
+    //3 ms  great solution, so it uses the arrays to mimic two hash table,
     // but more efficient than hash table.
     public boolean isIsomorphic(String sString, String tString) {
 
@@ -44,8 +45,8 @@ public class Solution {
             char sc = s[i];
             char tc = t[i];
             if(sm[sc] == 0 && tm[tc] == 0){
-                sm[sc] = tc;
-                tm[tc] = sc;
+                sm[sc] = tc; // a->b
+                tm[tc] = sc; // b->a
             }else{
                 if(sm[sc] != tc || tm[tc] != sc){
                     return false;
