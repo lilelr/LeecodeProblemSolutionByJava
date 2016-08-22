@@ -9,9 +9,13 @@ MiniumSizeSubarraysum 209
   一个java库二分查找方法的使用
   int result = Arrays.binarySearch(cs, cumuSum);  // actual index or should-be index
 
-  ndex of the search key, if it is contained in the array;
+  index of the search key, if it is contained in the array;
        *         otherwise, <tt>(-(<i>insertion point</i>) - 1)</tt>.  The
        *         <i>insertion point</i> is defined as the point at which the
        *         key would be inserted into the array: the index of the first
        *         element greater than the key, or <tt>a.length</tt> if all
        *         elements in the array are less than the specified key.
+
+
+ Range Sum Query 303
+   运用累积和数组

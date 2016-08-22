@@ -1,5 +1,5 @@
 //import note.BinaryTree.BinarySearchTreeIterator173.BSTIterator;
-//import problems.RangeSumQuery303.NumArray;
+//import note.array.RangeSumQuery303.NumArray;
 //
 //
 //

@@ -1,0 +1,6 @@
+Minimum Height Trees 310
+  先用list构建图,然后采取拓扑排序的思想,逐步剔除叶子节点,即从外围一层一层地往中央的的节点靠拢.
+
+332. Reconstruct Itinerary
+     Graph + DFS + Stack
+     用hashMap构建图,利用stack 实现图的深度优先搜索

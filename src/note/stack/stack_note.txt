@@ -15,3 +15,7 @@ basic Calculator II 227
    stack 可以用来记录数组的index
    stack 记录递增的条形柱的高度的index,一旦遇到矮的高度,马上弹栈,取栈顶元素计算矩形面积. 注意弹出一个元素后,新的栈顶元素仍然可能比下一个元素高,
    因此继续计算面积.
+
+332. Reconstruct Itinerary
+     Graph + DFS + Stack
+     利用stack 实现图的深度优先搜索

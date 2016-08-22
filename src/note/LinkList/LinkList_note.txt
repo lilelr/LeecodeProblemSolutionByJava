@@ -18,3 +18,12 @@ Add Two Numbers 2
 147. Insertion Sort List
   链表的插入排序
 
+LRU Cache 146
+  双链表和hashMap实现LRU Cahce. hashMap 主要用来记录LRU 中的的节点,加快搜索速度.
+  用到双链表的插入,删除
+
+ Remove Linked List Elements 203
+  单链表,删除一个链表中某一值的所有元素
+
+Reorder List 143
+单链表的指针重定向问题.认真观察题目规律,可将原有链表拆分成两个链表,然后两个链表再按一定次序连接成新的链表,不需要额外的空间.

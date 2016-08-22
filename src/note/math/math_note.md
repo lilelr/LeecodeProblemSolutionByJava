@@ -15,8 +15,32 @@ Happy Number 202
          return false;
    }
 
+
+Number of 1 Bits 191
+计算一个数的二进制位中含有多少个1, n&(n-1)
+while(n!=0){
+            count++;
+            n &= n-1;
+}
+
+Pascal's Triangle 118,119 杨辉三角
+  使用一个临时变量记录list[i],然后临时变量加上新的数,从而在O(k)空间内更新list表内的值
+                  Integer t = res.get(i);
+                  res.set(i, lastTerm + res.get(i));
+                  lastTerm = t;
+
+
 Rectangle Area 223
 分情况讨论,多多考虑极端情况,如点相同
+
+
+Power of Three 326
+b =a^3 ,因此, lgb = 3lga, res = lgb/lga
+
+
+
+
+
 
 
 

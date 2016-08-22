@@ -9,6 +9,7 @@ import java.util.Queue;
 
 /**
  * Created by yuxiao on 16/4/18.
+ * https://leetcode.com/problems/number-of-islands/
  * Have the template of union.  DFS and BFS of the matrix.
  */
 public class Solution {
@@ -29,7 +30,7 @@ public class Solution {
         return sum;
     }
 
-
+    // when entering in the recursive function, update the current value first of all
     void dps(char[][] grid, int i, int j, int lenRow, int lenCol) {
         grid[i][j] = '0';
         if (i >= 1 && i < lenRow && grid[i - 1][j] == '1') {
@@ -113,7 +114,7 @@ public class Solution {
 
         int count = 0;
 
-        Index index = new Index(grid);
+        Index index = new Index(grid);// initial the grid
 
         UnionFind uf = new UnionFind(index.getSize());
 
@@ -126,13 +127,19 @@ public class Solution {
                     if (i > 0 && grid[i - 1][j] == '1') //topNeighbor
                     {
                         int topNeighbor = index.getValue(i - 1, j);
-                        if (uf.join(ijValue, topNeighbor)) count--;
+                        if (uf.join(ijValue, topNeighbor)){
+                            //current node and its top neighbor can be merged successfully,so count decreases by 1
+                            count--;
+                        }
                     }
-                    ;
+
                     if (j > 0 && grid[i][j - 1] == '1') //leftNeighbor
                     {
                         int leftNeighbor = index.getValue(i, j - 1);
-                        if (uf.join(ijValue, leftNeighbor)) count--;
+                        if (uf.join(ijValue, leftNeighbor)) {
+                            // current node and its left neighbor can be merged successfully, so count decreases by 1
+                            count--;
+                        }
                     }
                 }
             }
@@ -140,6 +147,9 @@ public class Solution {
         return count;
     }
 
+    /**
+     * encapsulate the whole grid
+     */
     private class Index {
         private int width;
         private int height;
@@ -177,7 +187,7 @@ add the island to list islands.
         if (grid.length == 0 || grid[0].length == 0)
             return 0;
 
-        List<List<Point>> islands = new ArrayList<List<Point>>();
+        List<List<Point>> islands = new ArrayList<List<Point>>();// the collection of islands
         int m = grid.length, n = grid[0].length;
         boolean[][] inSomeIsland = new boolean[m][n];
         int[][] direction = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
@@ -185,7 +195,7 @@ add the island to list islands.
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == '1' && !inSomeIsland[i][j]) {
                     Queue<Point> queue = new LinkedList<>();
-                    List<Point> island = new ArrayList<Point>();
+                    List<Point> island = new ArrayList<Point>();// the collection of points in a specific island
                     queue.add(new Point(i, j));
                     inSomeIsland[i][j] = true;
                     island.add(new Point(i, j));
