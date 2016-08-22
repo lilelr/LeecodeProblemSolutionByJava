@@ -10,6 +10,12 @@ Increasing triple Subsequence 334
   min,mid
      先确定min,后根据num[i] 与min的比较,再确定mid
 
+Longest Icreasing Subsequence 300
+
+ 求一个序列的最长上升子序列,
+ 1. DP算法O(n^2)详见explanation.jpg
+ 2.  DP+binary search o(nlogn)同时用一个result数组记录下最长上升子序列,充分发挥二分查找的效率.
+     同时,在对一个result数组的二分查找过程,同时用当前的元素替换掉原来的元素
 
 
 
