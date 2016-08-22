@@ -1,11 +1,10 @@
-package problems.SortList148;
+package note.LinkList.SortList148;
 
 import org.junit.Test;
 
-import java.util.List;
-
 /**
  * Created by yuxiao on 4/8/16.
+ * https://leetcode.com/problems/sort-list/
  */
 
 
@@ -24,15 +23,22 @@ public class Solution {
         }
     }
 
-    // return LinkList[4]
-    // LinkList[0] -> start of smaller list, null if none
-    // LinkList[1] -> start of pivot list (contains duplicates of pivot values)
-    // LinkList[2] -> end of pivot list
-    // LinkList[3] -> start of bigger list, null if none
-    // Assume the input head must not be null, already check nullness in the caller
+
+
+    /**
+     *  return LinkList[4]
+     * LinkList[0] -> start of smaller list, null if none
+     * LinkList[1] -> start of pivot list (contains duplicates of pivot values)
+     * LinkList[2] -> end of pivot list
+     * LinkList[3] -> start of bigger list, null if none
+     * Assume the input head must not be null, already check nullness in the caller
+     * @param head
+     * @return LinkList[4]
+     */
     private ListNode[] partition(ListNode head) {
         ListNode[] res = new ListNode[4];
 
+        //chose head node as the pivot, pay attention that there may be duplicates of pivot values
         ListNode pivotLstStart = head;
         ListNode pivotLstEnd = pivotLstStart;
 
@@ -43,28 +49,37 @@ public class Solution {
 
         for (ListNode node = head.next; node != null; node = node.next) {
             if (node.val < pivotLstStart.val) {
-                if (smallLstStart == null)
+                // belong to small part
+                if (smallLstStart == null){
                     smallLstStart = node;
-                else
+                }
+                else{
                     smallLstEnd.next = node;
+                }
                 smallLstEnd = node;
             } else if (node.val > pivotLstStart.val) {
-                if (bigLstStart == null)
+                // belong to big part
+                if (bigLstStart == null){
                     bigLstStart = node;
-                else
+                }
+                else{
                     bigLstEnd.next = node;
+                }
                 bigLstEnd = node;
             } else {
+                // add to the pivot list
                 pivotLstEnd.next = node;
                 pivotLstEnd = node;
             }
         }
 
         // must terminate the smallLst and bigLst with null
-        if (smallLstEnd != null)
+        if (smallLstEnd != null){
             smallLstEnd.next = null;
-        if (bigLstEnd != null)
+        }
+        if (bigLstEnd != null){
             bigLstEnd.next = null;
+        }
 
         res[0] = smallLstStart;
         res[1] = pivotLstStart;
@@ -107,11 +122,12 @@ public class Solution {
         return res;
     }
 
-//    public LinkList sortList(LinkList head) {
-//        return quickSortList(head)[0];
-//    }
-
     public ListNode sortList(ListNode head) {
+        return quickSortList(head)[0];
+    }
+
+    // classic quick sort on linklist
+    public ListNode sortList2(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
@@ -142,6 +158,7 @@ public class Solution {
         while (lt.next != null) {
             lt = lt.next;
         }
+        // connect  tree link lists
         lt.next = mh.next;
         mt.next = rh.next;
         return lh.next;

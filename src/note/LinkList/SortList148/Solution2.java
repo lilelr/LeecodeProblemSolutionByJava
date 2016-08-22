@@ -1,4 +1,4 @@
-package problems.SortList148;
+package note.LinkList.SortList148;
 
 import org.junit.Test;
 

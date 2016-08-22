@@ -35,3 +35,6 @@ Reverse Linked List 206
 Reverse Linked List II 92
 反转单链表的第m到第n之间的节点. 三指针.
 
+148. Sort List
+Sort a linked list in O(n log n) time using constant space complexity.
+  单链表的快速排序算法,选取第一个节点为中轴后,拆分成比中轴值小的small链和比中轴值大的big链以及和中轴值相等的mid链.再分别对small链和big链递归用快速排序算法,最后把三个单链表连接起来,完成快速排序.注意需要用到dump node开始.
