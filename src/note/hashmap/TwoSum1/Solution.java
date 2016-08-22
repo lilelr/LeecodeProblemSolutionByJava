@@ -1,10 +1,11 @@
-package problems.TwoSum1;
+package note.hashmap.TwoSum1;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by yuxiao on 4/9/16.
+ * https://leetcode.com/problems/two-sum/
  */
 public class Solution {
 
@@ -23,17 +24,17 @@ public class Solution {
     }
 
     //HashMap
-    public int[] twoSumHashMap(int[] nums, int target){
+    public int[] twoSumHashMap(int[] nums, int target) {
         int len = nums.length;
         int[] res = new int[2];
-        Map<Integer,Integer> map = new HashMap<>();
-        for(int i=0;i<len;i++){
-            if(map.containsKey(target-nums[i])){
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < len; i++) {
+            if (map.containsKey(target - nums[i])) {
                 res[1] = i;
-                res[0] = map.get(target-nums[i]);
+                res[0] = map.get(target - nums[i]);
                 break;
             }
-            map.put(nums[i],i);
+            map.put(nums[i], i);
         }
         return res;
     }

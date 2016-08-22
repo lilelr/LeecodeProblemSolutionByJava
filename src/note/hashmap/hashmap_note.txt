@@ -36,3 +36,5 @@ if (set.contains(item + 1)) {
                 maxlen = Math.max(maxlen, count);
             }
 
+Two sum 1
+利用HashMap 快速查找

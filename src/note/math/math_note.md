@@ -37,7 +37,8 @@ Rectangle Area 223
 Power of Three 326
 b =a^3 ,因此, lgb = 3lga, res = lgb/lga
 
-
+Ugly Number 263
+求余和循环结合
 
 
 
