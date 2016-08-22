@@ -27,3 +27,11 @@ LRU Cache 146
 
 Reorder List 143
 单链表的指针重定向问题.认真观察题目规律,可将原有链表拆分成两个链表,然后两个链表再按一定次序连接成新的链表,不需要额外的空间.
+
+
+Reverse Linked List 206
+反转单链表
+
+Reverse Linked List II 92
+反转单链表的第m到第n之间的节点. 三指针.
+

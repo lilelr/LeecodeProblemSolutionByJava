@@ -1,7 +1,8 @@
-package problems.ReverseLinkedList206;
+package note.LinkList.ReverseLinkedList206;
 
 /**
  * Created by yuxiao on 16/4/18.
+ * https://leetcode.com/problems/reverse-linked-list/
  */
 public class Solution {
 
