@@ -44,3 +44,7 @@ Maximum Depth of Binary Tree 104
 
 Populating Next Right Pointers in Each Node 116
   层次遍历
+
+
+Same tree 100
+判断给定的两棵二叉树是否相同,结合先序遍历递归算法.
