@@ -2,6 +2,8 @@ package note.dp.BestTimetoBuyandSellStockII122;
 
 /**
  * Created by yuxiao on 16/7/6.
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/discuss/39441/A-simple-solution-with-O(n)-time-and-O(1)-space
  */
 public class Solution {
     //greedy

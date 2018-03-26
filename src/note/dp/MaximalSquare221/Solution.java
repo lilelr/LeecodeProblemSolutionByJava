@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * Created by yuxiao on 7/3/16.
+ * https://leetcode.com/problems/maximal-square/description/
  */
 public class Solution {
     //[思路] http://blog.csdn.net/xudli/article/details/46371673

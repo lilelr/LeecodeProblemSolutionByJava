@@ -1,4 +1,4 @@
-package note.dp.DistinctSubsequences115.RegularExpressionMatching10;
+package note.dp.RegularExpressionMatching10;
 
 import org.junit.Test;
 

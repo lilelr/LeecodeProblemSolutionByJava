@@ -5,6 +5,8 @@ package note.dp.WildcardMatching44;
  * https://leetcode.com/problems/wildcard-matching/
  */
 public class Solution {
+
+    // https://leetcode.com/problems/wildcard-matching/discuss/17810/Linear-runtime-and-constant-space-solution
     //https://discuss.leetcode.com/topic/27991/java-solution-o-n-2-dp-solution-with-some-explanations/2
     // O(n^2) DP solution with dp[][] matric transposed:
     //https://discuss.leetcode.com/topic/3040/linear-runtime-and-constant-space-solution/2

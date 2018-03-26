@@ -1,5 +1,7 @@
 package note.dp.EditDistance72;
 
+import org.junit.Test;
+
 /**
  * Created by yuxiao on 6/30/16.
  * https://leetcode.com/problems/edit-distance/
@@ -32,5 +34,13 @@ public class Solution {
         }
 
         return distance[m][n];
+    }
+
+    @Test
+    public void testMinDistance(){
+        String word1 = "abcd";
+        String word2 = "ab";
+        int ans = minDistance(word1,word2);
+        System.out.println(ans);
     }
 }
