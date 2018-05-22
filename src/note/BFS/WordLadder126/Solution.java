@@ -146,6 +146,12 @@ public class Solution {
 //        wordList.add("lot");
 //        wordList.add("log");
         List<List<String>> res = findLadders("hot","dog",wordList);
+        final int _1MB = 1024 * 1024;
+        byte[] value1 = new byte[_1MB*1024];
+        byte[] value2 = new byte[_1MB*1024];
+        byte[] value3 = new byte[_1MB*1024];
+        byte[] value4 = new byte[_1MB*1024];
+
     }
 
 }
